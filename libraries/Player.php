@@ -8,6 +8,7 @@ class Player
   protected $position;
   protected $points;
   protected $rebounds;
+  protected $fouls;
   protected $assists;
   protected $blocks;
   protected $turnovers;
