@@ -34,37 +34,78 @@ class game_controller extends base_controller
     echo $this->template;
   }
 
-  public function p_create() {
-    //echo Debug::dump($_POST);
+  
+  // checks if team already exists
+  //private function team_exists($name, $nickname) {
+  //  $q = "
+  //    SELECT team_id
+  //    FROM team
+  //    WHERE name = '$name'
+  //     and nickname = '$nickname'
+  //  ";
+  //  $team_id = DB::instance(DB_NAME)->select_field($q);
+  //
+  //  if ($team_id) {
+  //    return true;
+  //  }
+  //  
+  //  return false;
+  //}
 
-    // create home team
-    $data = Array(
-      'name' => $_POST['home-team-name'],
-      'nickname' => $_POST['home-nickname']
-    );
-    $home = DB::instance(DB_NAME)->insert('teams', $data);
-      
-    // create away team
-    $data = Array(
-      'name' => $_POST['away-team-name'],
-      'nickname' => $_POST['away-nickname']
-    );
-    $away = DB::instance(DB_NAME)->insert('teams', $data);
+
+  public function p_create() {
+
+    $home_name = $_POST['home-name'];
+    $home_nickname = $_POST['home-nickname'];
+    $away_name = $_POST['away-name'];
+    $away_nickname = $_POST['away-nickname'];
+
+    // process home team
+    $q = "
+      SELECT team_id
+      FROM team
+      WHERE name = '$home_name'
+        and nickname = '$home_nickname'
+    ";
+    $home_id = DB::instance(DB_NAME)->select_field($q);
+
+    if (!$home_id) {
+      // add to db  
+      $data = Array(
+        'name' => $home_name,
+        'nickname' => $home_nickname
+      );
+    }
+
+    // process away team
+    $q = "
+      SELECT team_id
+      FROM team
+      WHERE name = '$away_name'
+        and nickname = '$away_nickname'
+    ";
+    $away_id = DB::instance(DB_NAME)->select_field($q);
+
+    if (!$away_id) {
+      // add to db  
+      $data = Array(
+        'name' => $away_name,
+        'nickname' => $away_nickname
+      );
+    }
 
     // create game
     $data = Array(
-      'home' => $home,
-      'away' => $away,
+      'home' => $home_id,
+      'away' => $away_id,
       'created' => Time::now(),
       'periods' => $_POST['periods'],
       'period_minutes' => $_POST['period-minutes']
     );
-    $game_id = DB::instance(DB_NAME)->insert('games', $data);
-
-    //echo Debug::dump($game_id);
+    $game_id = DB::instance(DB_NAME)->insert('game', $data);
 
     //Router::redirect('/scoresheet/index/' . $game_id);
-    Router::redirect('/team/add_player/' . $game_id);
+    Router::redirect('/team/add_player/' . $home_id . '/' . $game_id);
   }
 
   public function gameplay() {

@@ -1,12 +1,12 @@
 <form action="/game/p_create" method="post" accept-charset="utf-8">
-  <label for='home-team-name'>Home team name</label>
-  <input type='text' name='home-team-name'><br>
+  <label for='home-name'>Home team name</label>
+  <input type='text' name='home-name'><br>
 
   <label for='home-nickname'>Home team nickname</label>
   <input type='text' name='home-nickname'><br>
 
-  <label for='away-team-name'>Away team name</label>
-  <input type='text' name='away-team-name'><br>
+  <label for='away-name'>Away team name</label>
+  <input type='text' name='away-name'><br>
 
   <label for='away-nickname'>Away team nickname</label>
   <input type='text' name='away-nickname'><br>
