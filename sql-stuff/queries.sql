@@ -48,6 +48,9 @@ create table plays_in (
   primary key (player_id, game_id)
 )
 
+alter table player
+  add column (pos ENUM('SG', 'SF', 'C', 'SG', 'PG') NOT NULL)
+
 alter table games
   add column (periods int(11) NOT NULL)
 
