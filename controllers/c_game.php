@@ -70,8 +70,8 @@ class game_controller extends base_controller
     // create game
     $data = Array(
       'home' => $_POST['home'],
-      'away' => $_POST['away']
-      //'created' => Time::now(),
+      'away' => $_POST['away'],
+      'created' => Time::now()
       //'periods' => $_POST['periods'],
       //'period_minutes' => $_POST['period-minutes']
     );
@@ -86,12 +86,12 @@ class game_controller extends base_controller
     $this->template->content = View::instance('v_game_gameplay');
 
     // add gameplay buttons
-    $this->template->content->two_pt_missed = '2pt missed';
-    $this->template->content->two_pt_made = '2pt made';
-    $this->template->content->three_pt_missed = '3pt missed';
-    $this->template->content->three_pt_made = '3pt made';
-    $this->template->content->ft_pt_missed = 'ft missed';
-    $this->template->content->ft_pt_made = 'ft made';
+    //$this->template->content->two_pt_missed = '2pt missed';
+    //$this->template->content->two_pt_made = '2pt made';
+    //$this->template->content->three_pt_missed = '3pt missed';
+    //$this->template->content->three_pt_made = '3pt made';
+    //$this->template->content->ft_pt_missed = 'ft missed';
+    //$this->template->content->ft_pt_made = 'ft made';
 
     // render view
     echo $this->template;

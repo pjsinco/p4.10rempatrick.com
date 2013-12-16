@@ -71,26 +71,30 @@ class team_controller extends base_controller
 
   }
 
-  public function display() {
+  public function display($team_id) {
 
-    // hard-coding some values for now
-    //$home = new Team('Bulls', true);
-    //$home->add_player(new Player('Hinrich', 'K.', '12'));
-    //$home->add_player(new Player('Snell', 'T.', '20'));
-    //$home->add_player(new Player('Deng', 'L.', '9'));
-    //$home->add_player(new Player('Boozer', 'C.', '5'));
-    //$home->add_player(new Player('Noah', 'J.', '13'));
-    
-    //$away = new Team('Raptors', false);
-    //$away->add_player(new Player('Lowry', 'K.', '7'));
-    //$away->add_player(new Player('DeRoza', 'D..', '10'));
-    //$away->add_player(new Player('Fields', 'L.', '2'));
-    //$away->add_player(new Player('Johnson', 'A..', '15'));
-    //$away->add_player(new Player('Valanciunas', 'J.', '17'));
+    // get  players
+    $q = "
+      SELECT *
+      FROM player p inner join team t
+        on p.team = t.team_id
+      WHERE p.team = $team_id
+    ";
+    $players = DB::instance(DB_NAME)->select_rows($q);
+
+    // get team name
+    $q = "
+      SELECT *
+      FROM team
+      WHERE team_id = $team_id
+    ";
+    $team = DB::instance(DB_NAME)->select_rows($q);
 
     $this->template->content = View::instance('v_team_display');
-    $this->template->content->home = $home;    
-    $this->template->content->away = $away;    
+    $this->template->content->players = $players;    
+    $this->template->content->team = 
+      $team[0]['name'] . ' ' . $team[0]['nickname'];    
+
 
     //render view
     echo $this->template;

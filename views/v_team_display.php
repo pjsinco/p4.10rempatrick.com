@@ -1,21 +1,12 @@
-Home: <?=$home->nickname;?><br>
-<?php foreach ($home->players as $player): ?>
-
-  <button id='<?=$home->nickname?>-<<?=$player->jersey?>'>
-    <?=$player->last_name?>
-  </button><br>
-  
-<?php endforeach; ?>
-
-<br><br>
-
-Away: <?=$away->nickname;?><br>
-<?php foreach ($away->players as $player): ?>
-
-  <button id='<?=$away->nickname?>-<<?=$player->jersey?>'>
-    <?=$player->last_name?>
-  </button><br>
-  
-<?php endforeach; ?>
-
+<h1><?=$team?></h1>
+<ul>
+  <?php foreach ($players as $player): ?>
+    <li>
+      <?=$player['jersey']?> 
+      <?=$player['first_name']?> 
+      <?=$player['last_name']?> 
+      <?=$player['pos']?>
+    </li>    
+  <?php endforeach; ?>
+</ul>
 
