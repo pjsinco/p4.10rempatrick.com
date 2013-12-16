@@ -1,21 +1,20 @@
 <form action="/game/p_create" method="post" accept-charset="utf-8">
-  <label for='home-name'>Home team name</label>
-  <input type='text' name='home-name'><br>
-
-  <label for='home-nickname'>Home team nickname</label>
-  <input type='text' name='home-nickname'><br>
-
-  <label for='away-name'>Away team name</label>
-  <input type='text' name='away-name'><br>
-
-  <label for='away-nickname'>Away team nickname</label>
-  <input type='text' name='away-nickname'><br>
-
-  <label for='periods'>Number of periods</label>
-  <input type='text' name='periods'><br>
-
-  <label for='period-minutes'>Minutes per period</label>
-  <input type='text' name='period-minutes'><br>
+  <label for='home'>Home team </label>
+  <select name="home" id="home">
+    <?php foreach($teams as $team): ?>
+      <?php $name = $team['name'] . ' ' . $team['nickname']; ?>
+       <option value="<?php echo $team['team_id']; ?>"><?php echo $name; ?></option>
+    <?php endforeach; ?>
+  </select>
+  <br>
+  <label for='away'>Away team </label>
+  <select name="away" id="away">
+    <?php foreach($teams as $team): ?>
+      <?php $name = $team['name'] . ' ' . $team['nickname']; ?>
+       <option value="<?php echo $team['team_id']; ?>"><?php echo $name; ?></option>
+    <?php endforeach; ?>
+  </select>
+  <br>
 
   <input class='submit' type='submit' value='Create game'>
 

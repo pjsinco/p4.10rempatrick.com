@@ -31,6 +31,18 @@ class game_controller extends base_controller
       Utils::load_client_files($client_files_body);
     $this->template->content = View::instance('v_game_create');
 
+    // get list of all teams
+    $q = "
+      SELECT *
+      FROM team
+      order by name asc;
+    ";
+    $teams = DB::instance(DB_NAME)->select_rows($q);
+
+    // pass list of teams to view
+    $this->template->content->teams = $teams;
+
+    // render view
     echo $this->template;
   }
 
@@ -55,57 +67,18 @@ class game_controller extends base_controller
 
   public function p_create() {
 
-    $home_name = $_POST['home-name'];
-    $home_nickname = $_POST['home-nickname'];
-    $away_name = $_POST['away-name'];
-    $away_nickname = $_POST['away-nickname'];
-
-    // process home team
-    $q = "
-      SELECT team_id
-      FROM team
-      WHERE name = '$home_name'
-        and nickname = '$home_nickname'
-    ";
-    $home_id = DB::instance(DB_NAME)->select_field($q);
-
-    if (!$home_id) {
-      // add to db  
-      $data = Array(
-        'name' => $home_name,
-        'nickname' => $home_nickname
-      );
-    }
-
-    // process away team
-    $q = "
-      SELECT team_id
-      FROM team
-      WHERE name = '$away_name'
-        and nickname = '$away_nickname'
-    ";
-    $away_id = DB::instance(DB_NAME)->select_field($q);
-
-    if (!$away_id) {
-      // add to db  
-      $data = Array(
-        'name' => $away_name,
-        'nickname' => $away_nickname
-      );
-    }
-
     // create game
     $data = Array(
-      'home' => $home_id,
-      'away' => $away_id,
-      'created' => Time::now(),
-      'periods' => $_POST['periods'],
-      'period_minutes' => $_POST['period-minutes']
+      'home' => $_POST['home'],
+      'away' => $_POST['away']
+      //'created' => Time::now(),
+      //'periods' => $_POST['periods'],
+      //'period_minutes' => $_POST['period-minutes']
     );
     $game_id = DB::instance(DB_NAME)->insert('game', $data);
 
-    //Router::redirect('/scoresheet/index/' . $game_id);
-    Router::redirect('/team/add_player/' . $home_id . '/' . $game_id);
+    Router::redirect('/scoresheet/index/' . $game_id);
+    //Router::redirect('/team/add_player/' . $home_id . '/' . $game_id);
   }
 
   public function gameplay() {
