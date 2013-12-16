@@ -74,29 +74,19 @@ class team_controller extends base_controller
   public function display($team_id) {
 
     // get  players
-    $q = "
-      SELECT *
-      FROM player p inner join team t
-        on p.team = t.team_id
-      WHERE p.team = $team_id
-    ";
-    $players = DB::instance(DB_NAME)->select_rows($q);
+    $players = Helpers::get_players($team_id);
 
-    // get team name
-    $q = "
-      SELECT *
-      FROM team
-      WHERE team_id = $team_id
-    ";
-    $team = DB::instance(DB_NAME)->select_rows($q);
+    // get team 
+    $team = Helpers::get_team($team_id);
 
     $this->template->content = View::instance('v_team_display');
+
+    // pass players, team to view
     $this->template->content->players = $players;    
     $this->template->content->team = 
-      $team[0]['name'] . ' ' . $team[0]['nickname'];    
+      $team['name'] . ' ' . $team['nickname'];    
 
-
-    //render view
+    // render view
     echo $this->template;
   }
 
