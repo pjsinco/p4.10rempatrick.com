@@ -686,3 +686,8 @@ nav li {
 .player-name {
   
 }
+#home-sortable-playing, #away-sortable-playing {
+  margin: 0 5px 5px 5px;
+  paddig: 5px;
+  font-size: 1.2em;
+}

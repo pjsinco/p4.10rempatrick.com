@@ -71,10 +71,10 @@ class team_controller extends base_controller
 
   }
 
-  public function display($team_id) {
+  public function display($game_id, $team_id) {
 
     // get  players
-    $players = Helpers::get_players($team_id);
+    $players = Helpers::get_players($game_id, $team_id);
 
     // get team 
     $team = Helpers::get_team($team_id);
@@ -89,10 +89,15 @@ class team_controller extends base_controller
 
     // pass players, team to view
     $this->template->content->players = $players;    
-    $this->template->content->team = 
-      $team['name'] . ' ' . $team['nickname'];    
+    $this->template->content->team = $team;
+      //$team['name'] . ' ' . $team['nickname'];    
 
-    // get player points
+    // get player stats
+    //foreach ($players as $player) {
+      //$pts = Helpers::get_player_pts($game_id, $player);
+      //$this->template->content->
+
+    //}
     
 
     // render view
