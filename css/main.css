@@ -662,10 +662,27 @@ nav li {
 .gameplays {
   color: #d0d0d0;
   font-size: 0.8em;
+  float: left;
+  /*clear: both;*/
 }
-#makes, #makes button {
+.makes, .makes button {
   color: green;
 }
-#misses, #misses button {
+.misses, .misses button {
   color: red;
+}
+.player-info {
+  float: left;
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  /*background-color: fuchsia;*/
+}
+.player-stats {
+  float: right;
+  width: 50px;
+  font-size: 50px;
+}
+.player-name {
+  
 }

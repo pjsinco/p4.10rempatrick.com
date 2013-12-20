@@ -77,10 +77,26 @@ class game_controller extends base_controller
     );
     $game_id = DB::instance(DB_NAME)->insert('game', $data);
 
+    // add game's players to plays_in table
+    $this->add_players_to_db($_POST['home'], $game_id);
+    $this->add_players_to_db($_POST['away'], $game_id);
+
     Router::redirect('/scoresheet/index/' . $game_id);
     //Router::redirect('/team/add_player/' . $home_id . '/' . $game_id);
   }
 
+  private function add_players_to_db($team_id, $game_id) {
+    $team_players = Helpers::get_players($team_id);
+    foreach ($team_players as $player) {
+      $player_data = Array(
+        'player' => $player['player_id'],
+        'team' => $team_id,
+        'game' => $game_id
+      );
+      DB::instance(DB_NAME)->insert_row('plays_in', $player_data);
+    }
+
+  }
   public function gameplay() {
 
     $this->template->content = View::instance('v_game_gameplay');
