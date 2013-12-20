@@ -17,13 +17,14 @@ class scoresheet_controller extends base_controller
     $away_players = Helpers::get_players($away['team_id']);
 
     $client_files_body = Array(
-      '/js/scoreboard_clock.js'
+      '/js/scoreboard_clock.js',
+      '/js/team_display.js'
     );
     $this->template->client_files_body =
       Utils::load_client_files($client_files_body);
 
-    $this->template->content->gameplays = 
-      View::instance('v_game_gameplay');
+    //$this->template->content->gameplays = 
+      //View::instance('v_game_gameplay');
 
     // pass home team to view
     $this->template->content->home =
@@ -31,6 +32,9 @@ class scoresheet_controller extends base_controller
     $this->template->content->home->players = $home_players;
     $this->template->content->home->team =
       $home['name'] . ' ' . $home['nickname']; 
+    //$this->template->content->home->players->play_buttons =
+      //View::instance('v_game_gameplay');
+      
 
     // pass away team to view
     $this->template->content->away =

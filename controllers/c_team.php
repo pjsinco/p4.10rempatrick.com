@@ -81,6 +81,12 @@ class team_controller extends base_controller
 
     $this->template->content = View::instance('v_team_display');
 
+    $client_files_body = Array(
+      '/js/team_display.js'
+    );
+    $this->template->client_files_body =
+      Utils::load_client_files($client_files_body);
+
     // pass players, team to view
     $this->template->content->players = $players;    
     $this->template->content->team = 

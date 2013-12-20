@@ -638,3 +638,34 @@ nav li {
   font-size: 50px;
 }
 
+#selectable, #sortable {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#selectable li, #sortable li {
+  margin: 3px;
+  padding: 0.4em;
+  /*font-size: 1.4em;*/
+  height: 72px;
+}
+
+#selectable .ui-selecting {
+  background: #feca40;
+}
+
+#selectable .ui-selecting {
+  background: #f39814;
+  color: #fff;
+}
+.gameplays {
+  color: #d0d0d0;
+  font-size: 0.8em;
+}
+#makes, #makes button {
+  color: green;
+}
+#misses, #misses button {
+  color: red;
+}
