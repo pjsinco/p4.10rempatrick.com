@@ -12,11 +12,11 @@ class Player
   protected $assists;
   protected $blocks;
   protected $turnovers;
-  protected $two_pt_missed;
-  protected $two_pt_made;
-  protected $three_pt_missed;
-  protected $three_pt_made;
-  protected $ft_missed;
+  protected $fg2missed;
+  protected $fg2made;
+  protected $fg3missed;
+  protected $fg3made;
+  protected $ft_miss;
   protected $ft_made;
 
   public function __construct($last_name, $first_name, $jersey) {
@@ -36,28 +36,6 @@ class Player
 
     return null;
   }
-
-//  public function get_jersey() {
-//    return $this->jersey;
-//  }
-//
-//  public function get_last_name() {
-//    return $this->last_name;
-//  }
-//
-//  public function get_first_name() {
-//    return $this->first_name;
-//  }
-//
-//  public function set_points($points) {
-//    $this->points += $points;
-//  }
-//
-//  public function get_points() {
-//    return $this->points;
-//  }
-
-
 
 } // eoc
 
