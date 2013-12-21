@@ -3,7 +3,7 @@
 <ul id='sortable'>
   <?php foreach ($players as $player): ?>
     <?php if ($player['playing']): ?> 
-  <?=$bench?>
+  <?=$bench ?>
   <button type="submit">Substitute</button>
 
   <li class='ui-widget-content'>

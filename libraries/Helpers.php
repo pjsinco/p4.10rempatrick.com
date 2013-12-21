@@ -2,6 +2,21 @@
 
 class Helpers 
 {
+  /*--------------------------------------------------------------------
+
+  --------------------------------------------------------------------*/ 
+  public static function get_player($game_id, $player_id) {
+    $q = "
+      SELECT *
+      FROM plays_in pi inner join player p
+        on pi.player = p.player_id
+      WHERE pi.player = $player_id
+        AND pi.game = $game_id
+    ";
+    $player = DB::instance(DB_NAME)->select_row($q);
+  
+    return $player;
+  }
 
   /*--------------------------------------------------------------------
 

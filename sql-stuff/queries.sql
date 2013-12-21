@@ -48,6 +48,9 @@ create table plays_in (
   primary key (player, game)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
+alter table plays_in
+  add column (playing BOOL default 0)
+
 alter table player
   drop column points,
   drop column rebounds,
@@ -108,3 +111,33 @@ alter table players
 rename table games to game,
   players to player,
   teams to team
+
+select pi.*, p.* 
+from player p inner join plays_in pi
+  on p.player_id = pi.player
+where pi.player in (
+  select player
+  from plays_in
+  where game = 50
+    and team = 1
+)
+
+select
+from 
+where player in (
+  select 
+  from
+  where
+)
+
+select pi.*, p.* 
+from plays_in pi inner join player p
+  on p.player_id = pi.player
+where pi.game = 50
+  and pi.team = 1
+
+SELECT *
+FROM plays_in pi inner join player p
+  on pi.player = p.player_id
+WHERE pi.player = 61
+  AND pi.game = 89
