@@ -1,12 +1,11 @@
 <h1><?=$team?></h1>
+<div id="<?=$team?>"><?=$team?></div>
 <!-- <ul id='sortable'> -->
 <ul id='sortable'>
   <?php foreach ($players as $player): ?>
     <?php if ($player['playing']): ?> 
   <?=$bench ?>
-  <button type="submit">Substitute</button>
-
-  <li class='ui-widget-content'>
+  <li id='player-<?=$player['player_id']?>' class='ui-widget-content'>
     <div class="player-name">
       <?=$player['last_name']?>
       <?=$player['playing']?>
@@ -28,7 +27,7 @@
     </div> <!-- end misses -->
     <div class="player-stats">
       <div class="points">12</div>
-    </div>
+    </div> <!-- end player-stats -->
   </li>    
     <?php endif; ?>
   <?php endforeach; ?>

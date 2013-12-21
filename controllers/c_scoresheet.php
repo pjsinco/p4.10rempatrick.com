@@ -20,7 +20,8 @@ class scoresheet_controller extends base_controller
 
     $client_files_body = Array(
       '/js/scoreboard_clock.js',
-      '/js/team_display.js'
+      '/js/team_display.js',
+      '/js/team_substitute.js'
     );
     $this->template->client_files_body =
       Utils::load_client_files($client_files_body);
@@ -33,6 +34,8 @@ class scoresheet_controller extends base_controller
       $home['name'] . ' ' . $home['nickname']; 
     $this->template->content->home->bench = 
       View::instance('v_team_bench');
+    $this->template->content->home->bench->game_id = 
+      $game_id;
     $this->template->content->home->bench->benched = 
       Helpers::get_bench_players($game_id, $home['team_id']);
 
@@ -44,6 +47,8 @@ class scoresheet_controller extends base_controller
       $away['name'] . ' ' . $away['nickname']; 
     $this->template->content->away->bench = 
       View::instance('v_team_bench');
+    $this->template->content->away->bench->game_id = 
+      $game_id;
     $this->template->content->away->bench->benched = 
       Helpers::get_bench_players($game_id, $away['team_id']);
 

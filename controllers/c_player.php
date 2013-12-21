@@ -25,5 +25,9 @@ class player_controller extends base_controller
     echo $this->template;
   }
 
+  public function stat_change($game_id, $player_id, $stat, $increment = 1) {
+    
+  }
+
 } // eoc
 ?>

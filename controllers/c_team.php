@@ -105,6 +105,7 @@ class team_controller extends base_controller
     $players = Helpers::get_bench_players($game_id, $team_id);
 
     $this->template->content->bench = $players;
+    $this->template->content->game_id = $game_id;
 
     // render view
     echo $this->template;
@@ -112,7 +113,19 @@ class team_controller extends base_controller
   }
   
   public function p_bench() {
-    $data = Array();
+
+
+  }
+
+  public function p_substitute() {
+    $client_files_body = Array(
+      '/js/team_substitute.js',
+    );
+    $this->template->client_files_body =
+      Utils::load_client_files($client_files_body);
+
+    echo Debug::dump($_POST);
+
   }
   
   
