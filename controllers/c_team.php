@@ -124,7 +124,7 @@ class team_controller extends base_controller
     $this->template->client_files_body =
       Utils::load_client_files($client_files_body);
 
-    echo Debug::dump($_POST);
+
 
   }
   
