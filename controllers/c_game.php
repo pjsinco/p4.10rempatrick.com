@@ -86,7 +86,7 @@ class game_controller extends base_controller
   }
 
   private function add_players_to_db($team_id, $game_id) {
-    $team_players = Helpers::get_players($team_id);
+    $team_players = Helpers::get_players_from_team($team_id);
     foreach ($team_players as $player) {
       $player_data = Array(
         'player' => $player['player_id'],

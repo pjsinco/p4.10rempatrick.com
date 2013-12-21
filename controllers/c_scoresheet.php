@@ -13,8 +13,10 @@ class scoresheet_controller extends base_controller
     $game = Helpers::get_game($game_id);
     $home = Helpers::get_team($game['home']);
     $away = Helpers::get_team($game['away']);
-    $home_players = Helpers::get_players($home['team_id']);
-    $away_players = Helpers::get_players($away['team_id']);
+    $home_players = 
+      Helpers::get_players_from_game($game_id, $home['team_id']);
+    $away_players = 
+      Helpers::get_players_from_game($game_id, $away['team_id']);
 
     $client_files_body = Array(
       '/js/scoreboard_clock.js',

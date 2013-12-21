@@ -5,12 +5,27 @@ class Helpers
   /*--------------------------------------------------------------------
 
   --------------------------------------------------------------------*/ 
-  public static function get_players($team_id) {
+  public static function get_players_from_game($game_id, $team_id) {
+    $q = "
+      SELECT pi.*, p.* 
+      FROM plays_in pi INNER JOIN player p
+        ON p.player_id = pi.player
+      WHERE pi.game = $game_id
+        AND pi.team = $team_id
+    ";
+    $players = DB::instance(DB_NAME)->select_rows($q);
+  
+    return $players;
+  }
+
+  /*--------------------------------------------------------------------
+
+  --------------------------------------------------------------------*/ 
+  public static function get_players_from_team($team_id) {
     $q = "
       SELECT *
-      FROM player p inner join team t
-        on p.team = t.team_id
-      WHERE p.team = $team_id
+      FROM player 
+      WHERE team = $team_id
     ";
     $players = DB::instance(DB_NAME)->select_rows($q);
   
