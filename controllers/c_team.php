@@ -92,6 +92,7 @@ class team_controller extends base_controller
     $this->template->content->team = 
       $team['name'] . ' ' . $team['nickname'];    
 
+
     // get player points
     
 

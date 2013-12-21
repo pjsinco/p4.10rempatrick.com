@@ -3,7 +3,9 @@
   <select name="home" id="home">
     <?php foreach($teams as $team): ?>
       <?php $name = $team['name'] . ' ' . $team['nickname']; ?>
-       <option value="<?php echo $team['team_id']; ?>"><?php echo $name; ?></option>
+     <option value="<?php echo $team['team_id']; ?>">
+       <?php echo $name; ?>
+      </option>
     <?php endforeach; ?>
   </select>
   <br>
@@ -11,7 +13,9 @@
   <select name="away" id="away">
     <?php foreach($teams as $team): ?>
       <?php $name = $team['name'] . ' ' . $team['nickname']; ?>
-       <option value="<?php echo $team['team_id']; ?>"><?php echo $name; ?></option>
+     <option value="<?php echo $team['team_id']; ?>">
+        <?php echo $name; ?>
+      </option>
     <?php endforeach; ?>
   </select>
   <br>

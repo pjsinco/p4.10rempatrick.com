@@ -34,9 +34,15 @@ class scoresheet_controller extends base_controller
     $this->template->content->home->players = $home_players;
     $this->template->content->home->team =
       $home['name'] . ' ' . $home['nickname']; 
-    //$this->template->content->home->players->play_buttons =
-      //View::instance('v_game_gameplay');
-      
+    // set up bench picker for home 
+    $home_bench = Array();
+    foreach ($home_players as $player) {
+      if ($player['playing'] == 0) {
+        array_push($home_bench, $player);
+      }
+    }
+    $this->template->content->home->bench = $home_bench;
+
 
     // pass away team to view
     $this->template->content->away =
@@ -44,6 +50,14 @@ class scoresheet_controller extends base_controller
     $this->template->content->away->players = $away_players;
     $this->template->content->away->team =
       $away['name'] . ' ' . $away['nickname']; 
+    // set up bench picker for away
+    $away_bench = Array();
+    foreach ($away_players as $player) {
+      if ($player['playing'] == 0) {
+        array_push($away_bench, $player);
+      }
+    }
+    $this->template->content->away->bench = $away_bench;
 
     $this->template->content->clock =
       View::instance('v_scoreboard_clock');
