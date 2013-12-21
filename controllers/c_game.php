@@ -46,25 +46,6 @@ class game_controller extends base_controller
     echo $this->template;
   }
 
-  
-  // checks if team already exists
-  //private function team_exists($name, $nickname) {
-  //  $q = "
-  //    SELECT team_id
-  //    FROM team
-  //    WHERE name = '$name'
-  //     and nickname = '$nickname'
-  //  ";
-  //  $team_id = DB::instance(DB_NAME)->select_field($q);
-  //
-  //  if ($team_id) {
-  //    return true;
-  //  }
-  //  
-  //  return false;
-  //}
-
-
   public function p_create() {
 
     // create game
@@ -86,6 +67,8 @@ class game_controller extends base_controller
   }
 
   private function add_players_to_db($team_id, $game_id) {
+    $starters = 0; // set 5 starters
+
     $team_players = Helpers::get_players_from_team($team_id);
     foreach ($team_players as $player) {
       $player_data = Array(
@@ -93,6 +76,11 @@ class game_controller extends base_controller
         'team' => $team_id,
         'game' => $game_id
       );
+      if ($starters < 5) {
+        $player_data['playing'] = 1;
+        $starters++;
+      }
+
       DB::instance(DB_NAME)->insert_row('plays_in', $player_data);
     }
 

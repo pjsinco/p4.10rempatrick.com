@@ -1,9 +1,11 @@
 <h1><?=$team?></h1>
 <ul id='sortable'>
   <?php foreach ($players as $player): ?>
+    <?php if ($player['playing']): ?> 
     <li class='ui-widget-content'>
       <div class="player-name">
         <?=$player['last_name']?>
+        <?=$player['playing']?>
       </div>
       <div class='player-info'>
         <?=$player['jersey']?> 
@@ -24,5 +26,6 @@
         <div class="points">12</div>
       </div>
     </li>    
+    <?php endif; ?>
   <?php endforeach; ?>
 </ul>
