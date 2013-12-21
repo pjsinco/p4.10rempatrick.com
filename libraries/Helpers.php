@@ -2,6 +2,23 @@
 
 class Helpers 
 {
+
+  /*--------------------------------------------------------------------
+
+  --------------------------------------------------------------------*/ 
+  public static function get_bench_players($game_id, $team_id) {
+    $players = self::get_players_from_game($game_id, $team_id);
+
+    $bench_players = Array();
+    foreach ($players as $player) {
+      if ($player['playing'] == 0) {
+        array_push($bench_players, $player);
+      }
+    }
+
+    return $bench_players;
+  }
+
   /*--------------------------------------------------------------------
 
   --------------------------------------------------------------------*/ 

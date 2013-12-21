@@ -94,12 +94,26 @@ class team_controller extends base_controller
 
 
     // get player points
-    
 
     // render view
     echo $this->template;
   }
 
+  public function bench($game_id, $team_id) {
+    $this->template->content = View::instance('v_team_bench');
+  
+    $players = Helpers::get_bench_players($game_id, $team_id);
+
+    $this->template->content->bench = $players;
+
+    // render view
+    echo $this->template;
+
+  }
+  
+  public function p_bench() {
+    $data = Array();
+  }
   
   
   

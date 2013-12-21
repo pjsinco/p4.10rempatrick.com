@@ -1,14 +1,9 @@
 <h1><?=$team?></h1>
+<!-- <ul id='sortable'> -->
 <ul id='sortable'>
   <?php foreach ($players as $player): ?>
     <?php if ($player['playing']): ?> 
-  <select name="bench" id="bench">
-    <?php foreach ($bench as $benched): ?>
-        <option value="<?php echo $benched['last_name']; ?>">
-          <?php echo $benched['last_name']; ?>
-        </option>
-    <?php endforeach; ?>
-  </select>
+  <?=$bench?>
   <button type="submit">Substitute</button>
 
   <li class='ui-widget-content'>
