@@ -5,7 +5,6 @@ class Helpers
   /*--------------------------------------------------------------------
 
   --------------------------------------------------------------------*/ 
-<<<<<<< HEAD
   public static function get_players_from_game($game_id, $team_id) {
     $q = "
       SELECT pi.*, p.* 
@@ -23,9 +22,17 @@ class Helpers
 
   --------------------------------------------------------------------*/ 
   public static function get_players_from_team($team_id) {
-=======
+    $q = "
+      SELECT *
+      FROM player
+      WHERE team = $team_id
+    ";
+    $players = DB::instance(DB_NAME)->select_rows($q);
+  
+    return $players;
+  }
+
   public static function get_player($player_id) {
->>>>>>> 21d7d6f255a5f4921172b7abcd5d378d91a97289
     $q = "
       SELECT *
       FROM player
