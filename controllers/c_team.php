@@ -117,15 +117,29 @@ class team_controller extends base_controller
 
   }
 
-  public function p_substitute() {
+  public function p_substitute($game_id, $player_out, $player_in) {
     $client_files_body = Array(
       '/js/team_substitute.js',
     );
     $this->template->client_files_body =
       Utils::load_client_files($client_files_body);
 
+    // move player_out to bench
+    $data = array(
+      'playing' => 0
+    );
+    $where = "WHERE game = $game_id and player = $player_out";
+    $success_out = DB::instance(DB_NAME)->update_row('plays_in', $data, $where);
 
+    // move player_in to game
+    $data = array(
+      'playing' => 1
+    );
+    $where = "WHERE game = $game_id and player = $player_in";
+    $success_in = DB::instance(DB_NAME)->update_row('plays_in', $data, $where);
 
+    echo "game_id: $game_id; subbing: $player_out is out; $player_in is in\n";
+    echo "swap " . ($success_out + $success_in == 2 ? "succeeded" : "failed");
   }
   
   
