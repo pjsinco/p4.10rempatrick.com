@@ -1,7 +1,9 @@
 <?php 
+
+require_once(APP_PATH . '/config/constants.php');
+
 class team_controller extends base_controller
 {
-  const FLOOR_PLAYERS = 5; // number of players playing at once
 
   public function __construct() {
     parent::__construct();
@@ -90,7 +92,7 @@ class team_controller extends base_controller
 
     // pass players, team to view
 
-    for ($i = 1; $i <= self::FLOOR_PLAYERS; $i++) {
+    for ($i = 1; $i <= FLOOR_PLAYERS; $i++) {
       $player = 'player_' . $i;
       $this->template->content->$player = $players_playing[$i - 1];
     }
@@ -118,6 +120,9 @@ class team_controller extends base_controller
     $this->template->content->benched = $players;
     $this->template->content->game_id = $game_id;
 
+    for ($i = 1; $i <= FLOOR_COUNT; $i++) {
+      
+    }
     // render view
     echo $this->template;
 
@@ -128,7 +133,8 @@ class team_controller extends base_controller
 
   }
 
-  public function p_substitute($game_id, $player_out, $player_in) {
+  public function p_substitute($game_id, $player_out, $player_in, 
+    $index) {
     $client_files_body = Array(
       '/js/team_substitute.js',
     );
@@ -149,8 +155,9 @@ class team_controller extends base_controller
     $where = "WHERE game = $game_id and player = $player_in";
     $success_in = DB::instance(DB_NAME)->update_row('plays_in', $data, $where);
 
-    echo "game_id: $game_id; subbing: $player_out is out; $player_in is in\n";
-    echo "swap " . ($success_out + $success_in == 2 ? "succeeded" : "failed");
+    echo $index;
+    //echo "game_id: $game_id; subbing: $player_out is out; $player_in is in\n";
+    //echo "swap " . ($success_out + $success_in == 2 ? "succeeded" : "failed");
   }
   
   

@@ -1,8 +1,10 @@
 <?php 
 
+require_once(APP_PATH . '/config/constants.php');
+
 class scoresheet_controller extends base_controller
 {
-  const FLOOR_PLAYERS = 5; // number of players playing at once
+
   public function __construct() {
     parent::__construct();
   }
@@ -38,7 +40,7 @@ class scoresheet_controller extends base_controller
       View::instance('v_team_display');
     //$this->pass_team_to_view($game_id, $home_players_playing,
       //$home_players_benched, $home);
-    for ($i = 1; $i <= self::FLOOR_PLAYERS; $i++) {
+    for ($i = 1; $i <= FLOOR_PLAYERS; $i++) {
       $player = 'player_' . $i;
        $this->template->content->home->$player = 
         $home_players_playing[$i - 1];
@@ -57,7 +59,7 @@ class scoresheet_controller extends base_controller
      */
     $this->template->content->away =
       View::instance('v_team_display');
-    for ($i = 1; $i <= self::FLOOR_PLAYERS; $i++) {
+    for ($i = 1; $i <= FLOOR_PLAYERS; $i++) {
       $player = 'player_' . $i;
        $this->template->content->away->$player = 
         $away_players_playing[$i - 1];
@@ -96,7 +98,7 @@ class scoresheet_controller extends base_controller
   private function pass_team_to_view($game_id, 
     $players_playing, $players_benched, $side) {
 
-    for ($i = 1; $i <= self::FLOOR_PLAYERS; $i++) {
+    for ($i = 1; $i <= FLOOR_PLAYERS; $i++) {
       $player = 'player_' . $i;
       $this->template->content->$side->${$player} = 
         $players_playing[$i - 1];

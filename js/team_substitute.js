@@ -1,4 +1,5 @@
 $('.substitute').click(function(event) {
+
   // get gameId from url
   var url = window.location.href.split('/');
   var gameId = url[url.length - 1]; 
@@ -9,8 +10,10 @@ $('.substitute').click(function(event) {
   // find the player whose subsitute button was clicked
   var playerOut = event.target.nextSibling.nextSibling.id;
   playerOut = playerOut.split('-')
+  var playerIndex = playerOut[playerOut.length - 2];
   playerOut = playerOut[playerOut.length - 1];
   console.log('out: ' + playerOut);
+  console.log('index: ' + playerIndex);
   console.log('in: ' + playerIn);
 
   //var options = {
@@ -26,7 +29,8 @@ $('.substitute').click(function(event) {
   $.ajax({
     type: 'POST',
     url: '/team/p_substitute/' 
-      + gameId + '/' + playerOut + '/' + playerIn,
+      + gameId + '/' + playerOut + '/' + playerIn 
+      + '/' + playerIndex,
     success: function(response) {
       console.log(response);
       location.reload();
