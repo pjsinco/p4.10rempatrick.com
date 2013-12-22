@@ -1,6 +1,7 @@
 <?php 
 class team_controller extends base_controller
 {
+  const PLAYING = 5; // number of players playing at once
 
   public function __construct() {
     parent::__construct();
@@ -71,10 +72,10 @@ class team_controller extends base_controller
 
   }
 
-  public function display($team_id) {
+  public function display($game_id, $team_id) {
 
     // get  players
-    $players = Helpers::get_players($team_id);
+    $players_playing = Helpers::get_players_playing($game_id, $team_id);
 
     // get team 
     $team = Helpers::get_team($team_id);
@@ -88,9 +89,19 @@ class team_controller extends base_controller
       Utils::load_client_files($client_files_body);
 
     // pass players, team to view
-    $this->template->content->players = $players;    
+
+    for ($i = 1; $i <= self::PLAYING; $i++) {
+      $player = 'player_' . $i;
+      $this->template->content->$player = $players_playing[$i - 1];
+    }
+
+    //$this->template->content->players = $players;    
     $this->template->content->team = 
       $team['name'] . ' ' . $team['nickname'];    
+    $this->template->content->bench = 
+      View::instance('v_team_bench');
+    $this->template->content->bench->benched =
+      Helpers::get_bench_players($game_id, $team_id);
 
 
     // get player points
@@ -104,7 +115,7 @@ class team_controller extends base_controller
   
     $players = Helpers::get_bench_players($game_id, $team_id);
 
-    $this->template->content->bench = $players;
+    $this->template->content->benched = $players;
     $this->template->content->game_id = $game_id;
 
     // render view

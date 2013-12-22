@@ -21,6 +21,22 @@ class Helpers
   /*--------------------------------------------------------------------
 
   --------------------------------------------------------------------*/ 
+  public static function get_players_playing($game_id, $team_id) {
+    $players = self::get_players_from_game($game_id, $team_id);
+
+    $playing_players = Array();
+    foreach ($players as $player) {
+      if ($player['playing'] == 1) {
+        array_push($playing_players, $player);
+      }
+    }
+
+    return $playing_players;
+  }
+
+  /*--------------------------------------------------------------------
+
+  --------------------------------------------------------------------*/ 
   public static function get_bench_players($game_id, $team_id) {
     $players = self::get_players_from_game($game_id, $team_id);
 
