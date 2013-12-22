@@ -7,25 +7,22 @@
   <li title="player-id: <?=${'player_' . $i}['player_id']?>" id='player-<?=$i?>-<?=${'player_' . $i}['player_id']?>' class='ui-widget-content'>
     <div class="player-name">
       <?=${'player_' . $i}['last_name']?>
-      <?//=${'player_' . $i}['playing']?>
     </div>
     <div class='player-info'>
       <?=${'player_' . $i}['jersey']?> 
-      <?//=$player['first_name']?> 
-      <?//=$player['pos']?>
     </div>
     <div class='gameplays makes'>Makes
-      <button id='two-pt-missed' type='submit'>2fg</button>
-      <button id='three-pt-missed' type='submit'>3fg</button>
-      <button id='ft-pt-missed' type='submit'>ft</button><br>
+      <button id='fg2-missed' type='submit'>2FG</button>
+      <button id='fg3-missed' type='submit'>3FG</button>
+      <button id='ft-missed' type='submit'>FT</button><br>
     </div> <!-- end makes -->
     <div class='gameplays misses'>Misses
-      <button id='two-pt-made' type='submit'>2fg</button>
-      <button id='three-pt-made' type='submit'>3fg</button>
-      <button id='ft-pt-made' type='submit'>ft</button><br>
+      <button id='fg2' type='submit'>2FG</button>
+      <button id='fg3' type='submit'>3FG</button>
+      <button id='ft' type='submit'>FT</button><br>
     </div> <!-- end misses -->
-    <div class="player-stats">
-      <div class="points">12</div>
+    <div id='player-<?=${'player_' . $i}['player_id']?>' class="player-stats">
+      <div class="points"></div>
     </div> <!-- end player-stats -->
   </li>    
   <?php endfor; ?>

@@ -9,6 +9,3 @@
   <?=$away?>
 </div>
 <div class='grid_12 spacer'></div>
-<!-- <div class='grid_4'> -->
-  <?//=$gameplays?>
-<!-- </div> -->
