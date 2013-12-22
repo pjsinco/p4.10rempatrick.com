@@ -5,6 +5,46 @@ class Helpers
   /*--------------------------------------------------------------------
 
   --------------------------------------------------------------------*/ 
+  public static function get_team_score($game_id, $team_id) {
+    $q = "
+      SELECT SUM(fg2 + fg3 + ft) 
+      FROM plays_in
+      WHERE game = $game_id
+        AND team = $team_id
+    ";
+
+    $team_points = DB::instance(DB_NAME)->select_field($q);
+    
+    return $team_points;
+  }
+
+  /*--------------------------------------------------------------------
+  Determines whether the given team is the home or away side
+  Param:
+    $game_id int
+    $team_id int
+  Returns:
+    'home' or 'away' string
+  --------------------------------------------------------------------*/ 
+  public static function get_side($game_id, $team_id) {
+    $q = "
+      SELECT home, away
+      FROM game
+      WHERE game_id = $game_id
+    ";
+
+    $teams = DB::instance(DB_NAME)->select_row($q);
+
+    if ($teams['home'] == strval($team_id)) {
+      return 'home';
+    }
+
+    return 'away';
+  }
+
+  /*--------------------------------------------------------------------
+
+  --------------------------------------------------------------------*/ 
   public static function get_player($game_id, $player_id) {
     $q = "
       SELECT *

@@ -26,6 +26,20 @@ class scoreboard_controller extends base_controller
     echo $this->template;
   }
 
+  public function team_score($game_id, $team_id) {
+    $this->template->content = View::instance('v_scoreboard_team_score');
+
+    $this->template->content->side =
+      Helpers::get_side($game_id, $team_id);
+    
+    // pass team score to view
+    $team_score = Helpers::get_team_score($game_id, $team_id);
+    $this->template->content->score = $team_score;
+
+    //render view
+    echo $this->template;
+  }
+
 
 } // eoc
 

@@ -94,6 +94,12 @@ alter table games
   modify column period_minutes
     tinyint not null default 12
 
+alter table plays_in
+  change fg2made fg2,
+  change fg3made fg3,
+  change ft_made ft,
+      
+
 alter table players
   modify column points smallint not null default 0,
   modify column rebounds smallint not null default 0,
