@@ -9,6 +9,102 @@ class team_controller extends base_controller
     parent::__construct();
   }
 
+
+  public function display($game_id, $team_id) {
+
+    // get  players
+    $players_playing = Helpers::get_players_playing($game_id, $team_id);
+
+    // get team 
+    $team = Helpers::get_team($team_id);
+
+    $this->template->content = View::instance('v_team_display');
+
+    $client_files_body = Array(
+      '/js/team_display.js'
+    );
+    $this->template->client_files_body =
+      Utils::load_client_files($client_files_body);
+
+    // pass players, team to view
+
+    for ($i = 1; $i <= FLOOR_PLAYERS; $i++) {
+      $player = $players_playing[$i - 1];
+      $player['points'] = 
+        Helpers::get_player_points($game_id, $player['player_id']);
+      $p = 'player_' . $i;
+      $this->template->content->$p = 
+        View::instance('v_player_display');
+      $this->template->content->$p->player = $player;
+    }
+
+    //$this->template->content->players = $players;    
+    $this->template->content->team = 
+      $team['name'] . ' ' . $team['nickname'];    
+    $this->template->content->bench = 
+      View::instance('v_team_bench');
+    $this->template->content->bench->benched =
+      Helpers::get_players_benched($game_id, $team_id);
+    $this->template->content->bench->game_id =
+      $game_id;
+
+
+    // get player points
+
+    // render view
+    echo $this->template;
+  }
+
+  public function bench($game_id, $team_id) {
+    $this->template->content = View::instance('v_team_bench');
+  
+    $players = Helpers::get_bench_players($game_id, $team_id);
+
+    $this->template->content->benched = $players;
+    $this->template->content->game_id = $game_id;
+
+    for ($i = 1; $i <= FLOOR_COUNT; $i++) {
+      
+    }
+    // render view
+    echo $this->template;
+
+  }
+  
+  public function p_bench() {
+
+
+  }
+
+  public function p_substitute($game_id, $player_out, $player_in, 
+    $index) {
+    $client_files_body = Array(
+      '/js/team_substitute.js',
+    );
+    $this->template->client_files_body =
+      Utils::load_client_files($client_files_body);
+
+    // move player_out to bench
+    $data = array(
+      'playing' => 0
+    );
+    $where = "WHERE game = $game_id and player = $player_out";
+    $success_out = DB::instance(DB_NAME)->update_row('plays_in', $data, $where);
+
+    // move player_in to game
+    $data = array(
+      'playing' => 1
+    );
+    $where = "WHERE game = $game_id and player = $player_in";
+    $success_in = DB::instance(DB_NAME)->update_row('plays_in', $data, $where);
+
+    echo $index;
+    //echo "game_id: $game_id; subbing: $player_out is out; $player_in is in\n";
+    //echo "swap " . ($success_out + $success_in == 2 ? "succeeded" : "failed");
+  }
+  
+  
+  
   public function add_player($team_id, $game_id) {
     $this->template->title = 'Add players';
 
@@ -73,95 +169,6 @@ class team_controller extends base_controller
     //echo '<pre>'; var_dump($_POST); echo '</pre>'; // debug
 
   }
-
-  public function display($game_id, $team_id) {
-
-    // get  players
-    $players_playing = Helpers::get_players_playing($game_id, $team_id);
-
-    // get team 
-    $team = Helpers::get_team($team_id);
-
-    $this->template->content = View::instance('v_team_display');
-
-    $client_files_body = Array(
-      '/js/team_display.js'
-    );
-    $this->template->client_files_body =
-      Utils::load_client_files($client_files_body);
-
-    // pass players, team to view
-
-    for ($i = 1; $i <= FLOOR_PLAYERS; $i++) {
-      $player = 'player_' . $i;
-      $this->template->content->$player = $players_playing[$i - 1];
-    }
-
-    //$this->template->content->players = $players;    
-    $this->template->content->team = 
-      $team['name'] . ' ' . $team['nickname'];    
-    $this->template->content->bench = 
-      View::instance('v_team_bench');
-    $this->template->content->bench->benched =
-      Helpers::get_bench_players($game_id, $team_id);
-
-
-    // get player points
-
-    // render view
-    echo $this->template;
-  }
-
-  public function bench($game_id, $team_id) {
-    $this->template->content = View::instance('v_team_bench');
-  
-    $players = Helpers::get_bench_players($game_id, $team_id);
-
-    $this->template->content->benched = $players;
-    $this->template->content->game_id = $game_id;
-
-    for ($i = 1; $i <= FLOOR_COUNT; $i++) {
-      
-    }
-    // render view
-    echo $this->template;
-
-  }
-  
-  public function p_bench() {
-
-
-  }
-
-  public function p_substitute($game_id, $player_out, $player_in, 
-    $index) {
-    $client_files_body = Array(
-      '/js/team_substitute.js',
-    );
-    $this->template->client_files_body =
-      Utils::load_client_files($client_files_body);
-
-    // move player_out to bench
-    $data = array(
-      'playing' => 0
-    );
-    $where = "WHERE game = $game_id and player = $player_out";
-    $success_out = DB::instance(DB_NAME)->update_row('plays_in', $data, $where);
-
-    // move player_in to game
-    $data = array(
-      'playing' => 1
-    );
-    $where = "WHERE game = $game_id and player = $player_in";
-    $success_in = DB::instance(DB_NAME)->update_row('plays_in', $data, $where);
-
-    echo $index;
-    //echo "game_id: $game_id; subbing: $player_out is out; $player_in is in\n";
-    //echo "swap " . ($success_out + $success_in == 2 ? "succeeded" : "failed");
-  }
-  
-  
-  
   
 } // eoc
 

@@ -8,5 +8,5 @@
   <?//=$player['pos']?>
 </div>
 <div class="points">
-  <?=$points?> 
+  <?=$player['points']?> 
 </div>

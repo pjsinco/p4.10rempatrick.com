@@ -7,6 +7,21 @@ class Helpers
   /*--------------------------------------------------------------------
 
   --------------------------------------------------------------------*/ 
+  public static function get_player_points($game_id, $player_id) {
+    $q = "
+      SELECT SUM((fg2 * " . FG2 . ") + (fg3 * " . FG3 . ") + (ft * " . FT . ")) 
+      FROM plays_in
+      WHERE game = $game_id
+        AND player = $player_id
+    ";
+    $player_points = DB::instance(DB_NAME)->select_field($q);
+    
+    return $player_points;
+  }
+
+  /*--------------------------------------------------------------------
+
+  --------------------------------------------------------------------*/ 
   public static function get_team_score($game_id, $team_id) {
     $q = "
       SELECT SUM((fg2 * " . FG2 . ") + (fg3 * " . FG3 . ") + (ft * " . FT . ")) 

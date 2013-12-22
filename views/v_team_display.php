@@ -1,15 +1,23 @@
 <h1><?=$team?></h1>
 <div id="<?=$team?>"><?=$team?></div>
-<!-- <ul id='sortable'> -->
 <ul id='sortable'>
   <?php for ($i = 1; $i <= 5; $i++): ?>
-  <?=$bench ?>
-  <li title="player-id: <?=${'player_' . $i}['player_id']?>" id='player-<?=$i?>-<?=${'player_' . $i}['player_id']?>' class='ui-widget-content'>
+  <?//=${'player_' . $i}->player['last_name']?>
+  <?//=${'player_' . $i}->player['first_name']?>
+  <?//=${'player_' . $i}->player['jersey']?>
+  <?=$bench?>
+  <li 
+    title="player-id-<?=${'player_' . $i}->player['player_id']?>" 
+    id="player-<?=$i?>-<?=${'player_' . $i}->player['player_id']?>" 
+    class='ui-widget-content'
+  >
     <div class="player-name">
-      <?=${'player_' . $i}['last_name']?>
+      <?=${'player_' . $i}->player['first_name']?>
+      <?=${'player_' . $i}->player['last_name']?>
     </div>
     <div class='player-info'>
-      <?=${'player_' . $i}['jersey']?> 
+      <?=${'player_' . $i}->player['jersey']?> 
+      <strong><?=${'player_' . $i}->player['points']?></strong> 
     </div>
     <div class='gameplays makes'>Makes
       <button id='fg2-missed' type='submit'>2FG</button>
@@ -21,7 +29,7 @@
       <button id='fg3' type='submit'>3FG</button>
       <button id='ft' type='submit'>FT</button><br>
     </div> <!-- end misses -->
-    <div id='player-<?=${'player_' . $i}['player_id']?>' class="player-stats">
+    <div id='player-<?=${'player_' . $i}->player['player_id']?>' class="player-stats">
       <div class="points"></div>
     </div> <!-- end player-stats -->
   </li>    

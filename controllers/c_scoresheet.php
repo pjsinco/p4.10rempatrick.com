@@ -42,7 +42,7 @@ class scoresheet_controller extends base_controller
       //$home_players_benched, $home);
     for ($i = 1; $i <= FLOOR_PLAYERS; $i++) {
       $player = 'player_' . $i;
-       $this->template->content->home->$player = 
+      $this->template->content->home->$player = 
         $home_players_playing[$i - 1];
     }
     $this->template->content->home->team =
@@ -61,7 +61,7 @@ class scoresheet_controller extends base_controller
       View::instance('v_team_display');
     for ($i = 1; $i <= FLOOR_PLAYERS; $i++) {
       $player = 'player_' . $i;
-       $this->template->content->away->$player = 
+      $this->template->content->away->$player = 
         $away_players_playing[$i - 1];
     }
     $this->template->content->away->players = $away_players_playing;
