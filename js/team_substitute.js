@@ -29,12 +29,14 @@ $('.substitute').click(function(event) {
       + gameId + '/' + playerOut + '/' + playerIn,
     success: function(response) {
       console.log(response);
+      location.reload();
       //console.log('swap successful');
       //console.log('in: ' + playerIn);
       //console.log('out: ' + playerOut);
       
     }
   });
+
 
 });
 
