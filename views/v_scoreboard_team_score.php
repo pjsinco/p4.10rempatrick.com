@@ -1,3 +1,4 @@
-<div class="team-score" id='<?=$side?>-score'>
-<h2><?=$score?></h2>
-</div>
+<span class="team-score" id='<?=$side?>-score'>
+<?=$side?><br> 
+<?=$score?><br>
+</span>

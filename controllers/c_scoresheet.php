@@ -80,8 +80,30 @@ class scoresheet_controller extends base_controller
     $this->template->content->clock =
       View::instance('v_scoreboard_clock');
 
-    //$this->template->content->set('game_id', $game_id);
+    /*
+     * pass game_id to view
+     */
     $this->template->content->game_id = $game_id;
+
+    /*
+     * pass home score to view
+     */
+    $this->template->content->home_score = 
+        View::instance('v_scoreboard_team_score');
+    $this->template->content->home_score->side = 'home';
+    $this->template->content->home_score->score = 
+      Helpers::get_team_score($game_id, $home['team_id']);
+    
+    /*
+     * pass away score to view
+     */
+    $this->template->content->away_score = 
+        View::instance('v_scoreboard_team_score');
+    $this->template->content->away_score->side = 'away';
+    $this->template->content->away_score->score = 
+      Helpers::get_team_score($game_id, $away['team_id']);
+    
+    
 
     echo $this->template;
   }

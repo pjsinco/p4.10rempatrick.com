@@ -1,5 +1,7 @@
 <?php 
 
+require_once APP_PATH . '/config/constants.php';
+
 class Helpers 
 {
   /*--------------------------------------------------------------------
@@ -7,7 +9,7 @@ class Helpers
   --------------------------------------------------------------------*/ 
   public static function get_team_score($game_id, $team_id) {
     $q = "
-      SELECT SUM(fg2 + fg3 + ft) 
+      SELECT SUM((fg2 * " . FG2 . ") + (fg3 * " . FG3 . ") + (ft * " . FT . ")) 
       FROM plays_in
       WHERE game = $game_id
         AND team = $team_id
