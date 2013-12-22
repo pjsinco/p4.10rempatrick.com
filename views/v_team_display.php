@@ -4,14 +4,10 @@
 <ul id='sortable'>
   <?php for ($i = 1; $i <= 5; $i++): ?>
   <?=$bench ?>
-  <li 
-    title="player-id: <?=${'player_' . $i}['player_id']?>" 
-    id='player-<?=$i?>-<?=${'player_' . $i}['player_id']?>' 
-    class='ui-widget-content'
-  >
+  <li title="player-id: <?=${'player_' . $i}['player_id']?>" id='player-<?=$i?>-<?=${'player_' . $i}['player_id']?>' class='ui-widget-content'>
     <div class="player-name">
       <?=${'player_' . $i}['last_name']?>
-      <?=${'player_' . $i}['playing']?>
+      <?//=${'player_' . $i}['playing']?>
     </div>
     <div class='player-info'>
       <?=${'player_' . $i}['jersey']?> 

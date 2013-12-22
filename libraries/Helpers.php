@@ -37,7 +37,7 @@ class Helpers
   /*--------------------------------------------------------------------
 
   --------------------------------------------------------------------*/ 
-  public static function get_bench_players($game_id, $team_id) {
+  public static function get_players_benched($game_id, $team_id) {
     $players = self::get_players_from_game($game_id, $team_id);
 
     $bench_players = Array();

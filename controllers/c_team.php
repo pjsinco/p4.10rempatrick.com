@@ -1,7 +1,7 @@
 <?php 
 class team_controller extends base_controller
 {
-  const PLAYING = 5; // number of players playing at once
+  const FLOOR_PLAYERS = 5; // number of players playing at once
 
   public function __construct() {
     parent::__construct();
@@ -90,7 +90,7 @@ class team_controller extends base_controller
 
     // pass players, team to view
 
-    for ($i = 1; $i <= self::PLAYING; $i++) {
+    for ($i = 1; $i <= self::FLOOR_PLAYERS; $i++) {
       $player = 'player_' . $i;
       $this->template->content->$player = $players_playing[$i - 1];
     }

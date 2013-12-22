@@ -1,5 +1,5 @@
 <select name='bench' class='bench'>
-  <?php foreach ($benched as $bench_player): ?>
+  <?php foreach ($players_benched as $bench_player): ?>
       <option value='<?php echo $bench_player['player_id']; ?>'>
         <?php echo $bench_player['last_name']; ?>
       </option>
