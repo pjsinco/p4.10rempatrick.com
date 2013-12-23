@@ -2,17 +2,10 @@
 <div id="<?=$team?>"><?=$team?></div>
 <ul class='players'>
   <?php for ($i = 1; $i <= 5; $i++): ?>
-  <?//=${'player_' . $i}->player['last_name']?>
-  <?//=${'player_' . $i}->player['first_name']?>
-  <?//=${'player_' . $i}->player['jersey']?>
-  <?=$bench?>
-
-  <?php //echo '<pre>'; var_dump(${'player_' . '1'}['last_name']); echo '</pre>'; // debug
-   ?>
-
-
   <li title="player-id-<?=${'player_' . $i}->player['player_id']?>" id="player-<?=$i?>-<?=${'player_' . $i}->player['player_id']?>" class='player-card'>
+  <div class='bench-players'><?=$bench?></div>
     <div class="player-name">
+      <span class="sub ui-icon ui-icon-circle-triangle-e"></span>
       <span class='jersey'>#<?=${'player_' . $i}->player['jersey']?></span> <?=${'player_' . $i}->player['first_name']?> <?=${'player_' . $i}->player['last_name']?> (<?=${'player_' . $i}->player['pos']?>)
     </div>
     <div class='player-info'>

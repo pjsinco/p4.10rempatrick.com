@@ -722,5 +722,12 @@ li.player-card {
   border-top-right-radius: 5px;
   
 }
-
+.bench-players {
+  display: none;
 }
+.sub {
+  position: absolute;
+  left: 268px;
+  top: 10px;
+}
+

@@ -9,6 +9,8 @@ $("button[class!='substitute']").click(function(event){
   playerId = playerId[playerId.length - 1];
   console.log(stat + ': ' + playerId);
 
+  $(event.target).parent().parent().effect('highlight');
+
   $.ajax({
     type: 'POST',
     url: '/player/p_increment_stat/' + gameId + '/' +
@@ -16,7 +18,7 @@ $("button[class!='substitute']").click(function(event){
     success: function(response) {
       console.log(response);
       var data = $.parseJSON(response);
-      $('div#player-' + playerId).children(':first').html(data.player_points);
+      $('div#player-' + playerId).children(':first').html(data.player_points + '<span> pts</span>');
       $('#' + data.team_id + '-score').html(data.team_points);
       //location.reload();
     }
