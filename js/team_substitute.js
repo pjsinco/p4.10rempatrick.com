@@ -23,7 +23,7 @@ $('.ui-icon-circle-triangle-e').click(function(event) {
     $("span[class*='closethick']").click(function(event) {
       $("li[id$='" + playerId + "']").children().eq(4).hide(300);
       $('#' + targetId).animate({
-        height: '72px'
+        height: '78px'
       }, 300, function() {
         $(event.target).attr('class', 'sub ui-icon ui-icon-circle-triangle-e');
         location.reload();
