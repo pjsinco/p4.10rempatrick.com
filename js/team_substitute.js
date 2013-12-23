@@ -16,7 +16,7 @@ $('.ui-icon-circle-triangle-e').click(function(event) {
   playerIndex = idTarget[idTarget.length - 2];
   targetId = 'player-' + playerIndex + '-' + playerId
   $('#' + targetId).animate({
-    height: '106px'
+    height: '101px'
   }, 300, function(){
     //$(event.target).removeClass('ui-icon-circle-triangle-e').addClass('ui-icon-closethick');
     $(event.target).attr('class', 'sub ui-icon ui-icon-closethick');

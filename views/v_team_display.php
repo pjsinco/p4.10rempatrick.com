@@ -4,6 +4,7 @@
   <?php for ($i = 1; $i <= 5; $i++): ?>
   <li title="player-id-<?=${'player_' . $i}->player['player_id']?>" id="player-<?=$i?>-<?=${'player_' . $i}->player['player_id']?>" class='player-card'>
     <div class="player-name">
+      <span class="get-stats ui-icon ui-icon-calculator"></span>
       <span class="sub ui-icon ui-icon-circle-triangle-e"></span>
       <span class='jersey'>#<?=${'player_' . $i}->player['jersey']?></span> <?//=${'player_' . $i}->player['first_name']?> <?=${'player_' . $i}->player['last_name']?> (<?=${'player_' . $i}->player['pos']?>)
     </div><!--     end player-name -->
@@ -20,7 +21,8 @@
     <div class='gameplays misses'>
       <button class='play fg2miss' type='submit' title='Missed 2-pt Field Goal'>2FG</button>
       <button class='play fg3miss' type='submit' title='Missed 3-pt Field Goal'>3FG</button>
-      <button class='play ft_miss' type='submit' title='Missed Free Throw'>FT</button><br>
+      <button class='play ft_miss' type='submit' title='Missed Free Throw'>FT</button>
+      <button class='play pf' type='submit' title='Personal Foul'>PF</button><br>
     </div> <!-- end misses -->
     <div id='player-<?=${'player_' . $i}->player['player_id']?>' class="player-stats">
       <div class="points"><?=${'player_' . $i}->player['points']?><span> pts</span></div>

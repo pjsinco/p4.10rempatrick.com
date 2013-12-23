@@ -645,16 +645,16 @@ ul.players {
 }
 
 ul.players li {
-  margin: 3px;
-  padding: 5px;
+  margin-bottom: 8px;
+  /*padding: 5px;*/
   /*font-size: 1.4em;*/
-  height: 72px;
+  height: 78px;
   position: relative;
 }
 
 .player-name {
   background-color: aliceblue;
-  padding: 2px 15px;
+  padding: 2px 0px 2px 6px;
   text-transform: uppercase;
   font-size: 0.9em;
   font-weight: bold;
@@ -678,11 +678,12 @@ ul.players li {
   color: #d0d0d0;
   font-size: 0.8em;
   position: absolute;
+  padding: 2px 0 2px 5px;
   /*float: left;*/
   /*clear: both;*/
 }
 .misses{
-  top: 56px;
+  top: 49px;
 }
 button.play {
   -webkit-border-radius: 5px;
@@ -691,9 +692,16 @@ button.play {
   color: #fff;
   border: none;
   width: 32px;
+  cursor: pointer;
 }
 button.play:focus {
   outline: none;
+}
+.makes button.play:hover {
+  background-color: darkgreen;
+}
+button.play:active {
+
 }
 .makes button {
   /*background-color: mediumspringgreen;*/
@@ -702,6 +710,9 @@ button.play:focus {
 .misses button {
   background-color: tomato;
   top: 30px;
+}
+.misses button.play:hover {
+  background-color: red;
 }
 .player-info {
   float: left;
@@ -743,12 +754,24 @@ li.player-card {
 .bench-players {
   display: none;
   position: absolute;
-  top: 83px;
+  top: 73px;
+  left: 3px;
 }
 .sub {
   position: absolute;
-  left: 268px;
-  top: 10px;
+  left: 279px;
+  top: 5px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+span.get-stats {
+  /*float: right;*/
+  position: absolute;
+  top: 4px;
+  left: 258px;
+  opacity: 0.5;
   cursor: pointer;
 }
-
+.points {
+  color: darkgray;
+}
