@@ -646,7 +646,7 @@ ul.players {
 
 ul.players li {
   margin: 3px;
-  /*padding: 0.4em;*/
+  padding: 5px;
   /*font-size: 1.4em;*/
   height: 72px;
 }
@@ -694,12 +694,15 @@ ul.players li {
 }
 .player-stats {
   /*float: right;*/
-  width: 50px;
+  width: 67px;
   font-size: 36px;
   position: absolute;
   left: 220px;
-  top: 39px;
+  top: 48px;
   text-align: right;
+}
+.player-stats span {
+  font-size: 12px;
 }
 .player-name {
   

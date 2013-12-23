@@ -29,7 +29,7 @@
       <button class='ft_miss' type='submit'>FT</button><br>
     </div> <!-- end misses -->
     <div id='player-<?=${'player_' . $i}->player['player_id']?>' class="player-stats">
-      <div class="points"><?=${'player_' . $i}->player['points']?></div>
+      <div class="points"><?=${'player_' . $i}->player['points']?><span> pts</span></div>
     </div> <!-- end player-stats -->
   </li>    
   <?php endfor; ?>
