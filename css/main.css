@@ -638,26 +638,40 @@ nav li {
   font-size: 50px;
 }
 
-#selectable, #sortable {
+ul.players {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-#selectable li, #sortable li {
+ul.players li {
   margin: 3px;
-  padding: 0.4em;
+  /*padding: 0.4em;*/
   /*font-size: 1.4em;*/
   height: 72px;
 }
 
+.player-name {
+  background-color: aliceblue;
+  padding: 2px 15px;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: bold;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  
+}
 #selectable .ui-selecting {
-  background: #feca40;
+  /*background: #feca40;*/
 }
 
 #selectable .ui-selecting {
-  background: #f39814;
-  color: #fff;
+  /*background: #f39814;*/
+  /*color: #fff;*/
 }
 .gameplays {
   color: #d0d0d0;
@@ -692,9 +706,12 @@ nav li {
 li.player-card {
   /*border: 1px solid #aaa;*/
   background: #fff;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   
 }
 

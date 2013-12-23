@@ -1,6 +1,6 @@
 <h1><?=$team?></h1>
 <div id="<?=$team?>"><?=$team?></div>
-<ul id='sortable'>
+<ul class='players'>
   <?php for ($i = 1; $i <= 5; $i++): ?>
   <?//=${'player_' . $i}->player['last_name']?>
   <?//=${'player_' . $i}->player['first_name']?>
@@ -13,10 +13,9 @@
 
   <li title="player-id-<?=${'player_' . $i}->player['player_id']?>" id="player-<?=$i?>-<?=${'player_' . $i}->player['player_id']?>" class='player-card'>
     <div class="player-name">
-      <?=${'player_' . $i}->player['first_name']?> <?=${'player_' . $i}->player['last_name']?>
+      <span class='jersey'>#<?=${'player_' . $i}->player['jersey']?></span> <?=${'player_' . $i}->player['first_name']?> <?=${'player_' . $i}->player['last_name']?> (<?=${'player_' . $i}->player['pos']?>)
     </div>
     <div class='player-info'>
-      <?=${'player_' . $i}->player['jersey']?> 
 <!--       <div class='player-pts'><?//=${'player_' . $i}->player['points']?></div>  -->
     </div>
     <div class='gameplays makes'>Makes
