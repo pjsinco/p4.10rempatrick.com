@@ -729,5 +729,6 @@ li.player-card {
   position: absolute;
   left: 268px;
   top: 10px;
+  cursor: pointer;
 }
 
