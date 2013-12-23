@@ -1,3 +1,7 @@
+//$('.bench').change(function(){
+//console.log($('select option:selected').val());
+//});
+
 $('.substitute').click(function(event) {
 
   // get gameId from url

@@ -28,7 +28,8 @@ class scoresheet_controller extends base_controller
     $client_files_body = Array(
       '/js/scoreboard_clock.js',
       '/js/team_display.js',
-      '/js/team_substitute.js'
+      '/js/team_substitute.js',
+      '/js/player_stat_change.js'
     );
     $this->template->client_files_body =
       Utils::load_client_files($client_files_body);

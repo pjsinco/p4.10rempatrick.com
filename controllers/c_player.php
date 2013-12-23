@@ -21,7 +21,34 @@ class player_controller extends base_controller
     echo $this->template;
   }
 
-  public function stat_change($game_id, $player_id, $stat, $increment = 1) {
+  public function points($game_id, $player_id) {
+
+  }
+
+  public function increment_stat($game_id, $player_id, $stat) {
+    
+  }
+
+  public function p_increment_stat($game_id, $player_id, $stat) {
+    $q = "
+      UPDATE plays_in
+      SET $stat = $stat + 1 
+      WHERE game = $game_id
+        AND player = $player_id
+    ";
+    echo DB::instance(DB_NAME)->query($q);
+
+    $data = array(
+      'game' => (int) $game_id,
+      'player' => (int) $player_id,
+      $stat => $stat . ' = ' . $stat . ' + 1'
+    );
+    $stats = json_encode($data);
+    //$where = "where game = $game_id and player = $player_id";
+    //echo '<pre>'; var_dump($data); echo '</pre>'; // debug
+
+    
+     
     
   }
 

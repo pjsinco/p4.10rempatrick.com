@@ -95,9 +95,9 @@ alter table games
     tinyint not null default 12
 
 alter table plays_in
-  change fg2made fg2,
-  change fg3made fg3,
-  change ft_made ft,
+  change fg2made fg2 smallint not null default 0,
+  change fg3made fg3 smallint not null default 0,
+  change ft_made ft smallint not null default 0
       
 
 alter table players
