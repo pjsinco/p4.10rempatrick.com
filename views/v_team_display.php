@@ -6,6 +6,11 @@
   <?//=${'player_' . $i}->player['first_name']?>
   <?//=${'player_' . $i}->player['jersey']?>
   <?=$bench?>
+
+  <?php //echo '<pre>'; var_dump(${'player_' . '1'}['last_name']); echo '</pre>'; // debug
+   ?>
+
+
   <li 
     title="player-id-<?=${'player_' . $i}->player['player_id']?>" 
     id="player-<?=$i?>-<?=${'player_' . $i}->player['player_id']?>" 

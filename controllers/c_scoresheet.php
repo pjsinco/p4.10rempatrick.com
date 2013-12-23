@@ -41,17 +41,24 @@ class scoresheet_controller extends base_controller
     //$this->pass_team_to_view($game_id, $home_players_playing,
       //$home_players_benched, $home);
     for ($i = 1; $i <= FLOOR_PLAYERS; $i++) {
-      $player = 'player_' . $i;
-      $this->template->content->home->$player = 
-        $home_players_playing[$i - 1];
+      $player = $home_players_playing[$i - 1];
+      $player['points'] = 
+        Helpers::get_player_points($game_id, $player['player_id']);
+      $p = 'player_' . $i;
+      $this->template->content->home->$p = 
+        View::instance('v_player_display');
+      $this->template->content->home->$p->player = $player;
+
+      //$player = 'player_' . $i;
+      //$this->template->content->home->$player = 
+        //$home_players_playing[$i - 1];
     }
     $this->template->content->home->team =
       $home['name'] . ' ' . $home['nickname']; 
     $this->template->content->home->bench = 
       View::instance('v_team_bench');
-    $this->template->content->home->bench->game_id = 
-      $game_id;
-    $this->template->content->home->bench->players_benched = 
+    $this->template->content->home->bench->game_id = $game_id;
+    $this->template->content->home->bench->benched = 
       Helpers::get_players_benched($game_id, $home['team_id']);
 
     /*
@@ -60,18 +67,26 @@ class scoresheet_controller extends base_controller
     $this->template->content->away =
       View::instance('v_team_display');
     for ($i = 1; $i <= FLOOR_PLAYERS; $i++) {
-      $player = 'player_' . $i;
-      $this->template->content->away->$player = 
-        $away_players_playing[$i - 1];
+      $player = $away_players_playing[$i - 1];
+      $player['points'] = 
+        Helpers::get_player_points($game_id, $player['player_id']);
+      $p = 'player_' . $i;
+      $this->template->content->away->$p = 
+        View::instance('v_player_display');
+      $this->template->content->away->$p->player = $player;
+
+      //$player = 'player_' . $i;
+      //$this->template->content->away->$player = 
+        //$away_players_playing[$i - 1];
     }
-    $this->template->content->away->players = $away_players_playing;
+    //$this->template->content->away->players = $away_players_playing;
     $this->template->content->away->team =
       $away['name'] . ' ' . $away['nickname']; 
     $this->template->content->away->bench = 
       View::instance('v_team_bench');
     $this->template->content->away->bench->game_id = 
       $game_id;
-    $this->template->content->away->bench->players_benched = 
+    $this->template->content->away->bench->benched = 
       Helpers::get_players_benched($game_id, $away['team_id']);
 
     /*
