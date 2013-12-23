@@ -15,7 +15,10 @@ $("button[class!='substitute']").click(function(event){
       playerId + '/' + stat,
     success: function(response) {
       console.log(response);
-      location.reload();
+      var data = $.parseJSON(response);
+      $('div#player-' + playerId).children(':first').html(data.player_points);
+      $('#' + data.team_id + '-score').html(data.team_points);
+      //location.reload();
     }
   });
   

@@ -22,7 +22,7 @@ class player_controller extends base_controller
   }
 
   public function points($game_id, $player_id) {
-
+    
   }
 
   public function increment_stat($game_id, $player_id, $stat) {
@@ -36,20 +36,18 @@ class player_controller extends base_controller
       WHERE game = $game_id
         AND player = $player_id
     ";
-    echo DB::instance(DB_NAME)->query($q);
+    DB::instance(DB_NAME)->query($q);
 
+    $team_id = Helpers::get_team_for_player($game_id, $player_id);
     $data = array(
-      'game' => (int) $game_id,
-      'player' => (int) $player_id,
-      $stat => $stat . ' = ' . $stat . ' + 1'
+      'game_id' => $game_id,
+      'player_id' => $player_id,
+      'player_points' => 
+        Helpers::get_player_points($game_id, $player_id),
+      'team_id' => $team_id,
+      'team_points' => Helpers::get_team_points($game_id, $team_id)
     );
-    $stats = json_encode($data);
-    //$where = "where game = $game_id and player = $player_id";
-    //echo '<pre>'; var_dump($data); echo '</pre>'; // debug
-
-    
-     
-    
+    echo json_encode($data);
   }
 
 } // eoc

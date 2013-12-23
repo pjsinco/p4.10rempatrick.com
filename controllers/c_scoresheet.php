@@ -106,18 +106,20 @@ class scoresheet_controller extends base_controller
      */
     $this->template->content->home_score = 
         View::instance('v_scoreboard_team_score');
+    $this->template->content->home_score->team_id = $home['team_id'];
     $this->template->content->home_score->side = 'home';
     $this->template->content->home_score->score = 
-      Helpers::get_team_score($game_id, $home['team_id']);
+      Helpers::get_team_points($game_id, $home['team_id']);
     
     /*
      * pass away score to view
      */
     $this->template->content->away_score = 
         View::instance('v_scoreboard_team_score');
+    $this->template->content->away_score->team_id = $away['team_id'];
     $this->template->content->away_score->side = 'away';
     $this->template->content->away_score->score = 
-      Helpers::get_team_score($game_id, $away['team_id']);
+      Helpers::get_team_points($game_id, $away['team_id']);
     
     
 

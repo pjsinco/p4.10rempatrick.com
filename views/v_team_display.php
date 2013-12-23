@@ -25,9 +25,9 @@
       <button class='ft' type='submit'>FT</button><br>
     </div> <!-- end makes -->
     <div class='gameplays misses'>Misses
-      <button class='fg2-missed' type='submit'>2FG</button>
-      <button class='fg3-missed' type='submit'>3FG</button>
-      <button class='ft-missed' type='submit'>FT</button><br>
+      <button class='fg2miss' type='submit'>2FG</button>
+      <button class='fg3miss' type='submit'>3FG</button>
+      <button class='ft_miss' type='submit'>FT</button><br>
     </div> <!-- end misses -->
     <div id='player-<?=${'player_' . $i}->player['player_id']?>' class="player-stats">
       <div class="points"><?=${'player_' . $i}->player['points']?></div>
