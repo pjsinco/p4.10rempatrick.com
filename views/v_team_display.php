@@ -11,7 +11,7 @@
    ?>
 
 
-  <li title="player-id-<?=${'player_' . $i}->player['player_id']?>" id="player-<?=$i?>-<?=${'player_' . $i}->player['player_id']?>" class='ui-widget-content'>
+  <li title="player-id-<?=${'player_' . $i}->player['player_id']?>" id="player-<?=$i?>-<?=${'player_' . $i}->player['player_id']?>" class='player-card'>
     <div class="player-name">
       <?=${'player_' . $i}->player['first_name']?> <?=${'player_' . $i}->player['last_name']?>
     </div>
