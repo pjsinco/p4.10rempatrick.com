@@ -693,9 +693,13 @@ ul.players li {
   /*background-color: fuchsia;*/
 }
 .player-stats {
-  float: right;
+  /*float: right;*/
   width: 50px;
-  font-size: 50px;
+  font-size: 36px;
+  position: absolute;
+  left: 220px;
+  top: 39px;
+  text-align: right;
 }
 .player-name {
   
@@ -705,6 +709,7 @@ ul.players li {
 }
 li.player-card {
   /*border: 1px solid #aaa;*/
+  position: relative;
   background: #fff;
   -webkit-border-top-left-radius: 5px;
   -webkit-border-top-right-radius: 5px;
