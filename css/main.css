@@ -649,6 +649,7 @@ ul.players li {
   padding: 5px;
   /*font-size: 1.4em;*/
   height: 72px;
+  position: relative;
 }
 
 .player-name {
@@ -676,14 +677,31 @@ ul.players li {
 .gameplays {
   color: #d0d0d0;
   font-size: 0.8em;
-  float: left;
+  position: absolute;
+  /*float: left;*/
   /*clear: both;*/
 }
-.makes, .makes button {
-  color: green;
+.misses{
+  top: 56px;
 }
-.misses, .misses button {
-  color: red;
+button.play {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  width: 32px;
+}
+button.play:focus {
+  outline: none;
+}
+.makes button {
+  /*background-color: mediumspringgreen;*/
+  background-color: seagreen;
+}
+.misses button {
+  background-color: tomato;
+  top: 30px;
 }
 .player-info {
   float: left;
@@ -724,6 +742,8 @@ li.player-card {
 }
 .bench-players {
   display: none;
+  position: absolute;
+  top: 83px;
 }
 .sub {
   position: absolute;
