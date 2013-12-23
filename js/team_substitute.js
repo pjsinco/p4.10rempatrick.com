@@ -2,14 +2,23 @@
 //console.log($('select option:selected').val());
 //});
 
-$('.sub').mouseover(function(event) {
-  $('.bench-players:hidden').show(300);
-  $('.player-card').animate({
+$('.sub').click(function(event) {
+  var idTarget =
+      $(event.target).parent().parent().attr('id').split('-');
+
+  var playerId = idTarget[idTarget.length - 1];
+  var playerIndex = idTarget[idTarget.length - 2];
+  var targetId = 'player-' + playerIndex + '-' + playerId
+//  //$('li[id=' + targetId + ']').get(0).show(300);
+  $('#' + targetId).animate({
     height: '106px',
   }, 300);
-
-
-
+  $("li[id$='" + playerId + "']").children().eq(4).show(50);
+//
+//  $("li[id$='60']" > '.bench-players').show(300);
+  console.log($("li[id$='" + playerId + "']").children().eq(4).attr('class'));
+  console.log('id: ' + playerId);
+  console.log('index: ' + playerIndex);
   console.log('mousing over sub button');
 });
 
