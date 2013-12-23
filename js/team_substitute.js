@@ -2,14 +2,19 @@
 //console.log($('select option:selected').val());
 //});
 
+var idTarget;
+var playerId;
+var playerIndex;
+var targetId;
+
 
 $('.ui-icon-circle-triangle-e').click(function(event) {
-  var idTarget =
-      $(event.target).parent().parent().attr('id').split('-');
+  idTarget =
+  $(event.target).parent().parent().attr('id').split('-');
 
-  var playerId = idTarget[idTarget.length - 1];
-  var playerIndex = idTarget[idTarget.length - 2];
-  var targetId = 'player-' + playerIndex + '-' + playerId
+  playerId = idTarget[idTarget.length - 1];
+  playerIndex = idTarget[idTarget.length - 2];
+  targetId = 'player-' + playerIndex + '-' + playerId
   $('#' + targetId).animate({
     height: '106px'
   }, 300, function(){
@@ -29,50 +34,61 @@ $('.ui-icon-circle-triangle-e').click(function(event) {
 });
 
 
-//$('.substitute').click(function(event) {
-//
-//  // get gameId from url
-//  var url = window.location.href.split('/');
-//  var gameId = url[url.length - 1]; 
-//
-//  var playerIn = event.target.previousSibling.previousSibling.previousSibling.previousSibling;
-//  playerIn = playerIn.options[playerIn.selectedIndex].value;
-//
-//  // find the player whose subsitute button was clicked
-//  var playerOut = event.target.nextSibling.nextSibling.id;
-//  playerOut = playerOut.split('-')
-//  var playerIndex = playerOut[playerOut.length - 2];
-//  playerOut = playerOut[playerOut.length - 1];
-//  console.log('out: ' + playerOut);
-//  console.log('index: ' + playerIndex);
-//  console.log('in: ' + playerIn);
-//
-//  //var options = {
-//    //type: 'POST',
-//    //url: '/team/p_substitute',
-//    //success: function(response) {
-//      //console.log('swap successful');
-//      //console.log('in: ' + playerIn);
-//      //console.log('out: ' + playerIn);
-//    //a
-//  //} 
-//  
-//  $.ajax({
-//    type: 'POST',
-//    url: '/team/p_substitute/' 
-//      + gameId + '/' + playerOut + '/' + playerIn 
-//      + '/' + playerIndex,
-//    success: function(response) {
-//      console.log(response);
-//      location.reload();
-//      //console.log('swap successful');
-//      //console.log('in: ' + playerIn);
-//      //console.log('out: ' + playerOut);
-//      
-//    }
-//  });
-//
-//
-//});
+$('.substitute').click(function(event) {
+
+  // get gameId from url
+  var url = window.location.href.split('/');
+  var gameId = url[url.length - 1]; 
+
+  var playerIn = event.target.previousSibling.previousSibling.previousSibling.previousSibling;
+  playerIn = playerIn.options[playerIn.selectedIndex].value;
+  var playerOut = playerId;
+
+  // find the player whose subsitute button was clicked
+  //var playerOut = event.target.nextSibling.nextSibling.id;
+  //playerOut = playerOut.split('-');
+  //var playerIndex = playerOut[playerOut.length - 2];
+  //playerOut = playerOut[playerOut.length - 1];
+  console.log('gameId: ' + gameId);
+  console.log('playerId: ' + playerId);
+  //console.log('out: ' + playerOut);
+  console.log('index: ' + playerIndex);
+  console.log('in: ' + playerIn);
+
+  //var options = {
+    //type: 'POST',
+    //url: '/team/p_substitute',
+    //success: function(response) {
+      //console.log('swap successful');
+      //console.log('in: ' + playerIn);
+      //console.log('out: ' + playerIn);
+    //a
+  //} 
+  
+  $.ajax({
+    type: 'POST',
+    url: '/team/p_substitute/' 
+      + gameId + '/' + playerOut + '/' + playerIn 
+      + '/' + playerIndex,
+    success: function(response) {
+      console.log(response);
+
+      $("li[id$='-" + playerOut + "']").
+        replaceWith("<li class='player-card' title='player-id-'" +
+          playerIn + "' id='player-" + playerIndex + "-" + 
+          playerIn + "'>");
+
+      location.reload();
+
+      //location.reload();
+      //console.log('swap successful');
+      //console.log('in: ' + playerIn);
+      //console.log('out: ' + playerOut);
+      
+    }
+  });
+
+
+});
 
 
