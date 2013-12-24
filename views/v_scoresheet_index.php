@@ -8,6 +8,10 @@
       BONUS<br>
       <span class="circle lit">&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
+    <div class="team-fouls">
+      FOULS<br>
+      <span>7</span>
+    </div>
   </div>
   <div class="score">
     <?=$away_score?>
@@ -15,12 +19,18 @@
       BONUS<br>
       <span class="circle">&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
+    <div class="team-fouls">
+      FOULS<br>
+      <span>8</span>
+    </div>
   </div>
   <div id="period">
     PERIOD<br>
+    <span class='period-change decrement'>-</span>
     <span>
       2 
     </span>
+    <span class='period-change increment'>+</span>
   </div>
 </div>
 <div class='team grid_4'>

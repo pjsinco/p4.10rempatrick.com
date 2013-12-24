@@ -653,7 +653,8 @@ ul.players li {
 }
 
 .player-name {
-  background-color: aliceblue;
+  background-color: honeydew;
+  color: #40586b;
   padding: 2px 0px 2px 6px;
   text-transform: uppercase;
   font-size: 0.9em;
@@ -741,6 +742,7 @@ button.play:active {
   color: #fff;
   display: block;
   margin-top: 25px;
+  margin-bottom: 28px;
   /*position: absolute;*/
   /*top: 37px;*/
   /*left: 43px;*/
@@ -794,7 +796,7 @@ h1.team-name {
   color: darkorange;
 }
 .scoreboard {
-  height: 160px;
+  height: 200px;
   background-color: #000;
   color: #fff;
   border: 2px solid white;
@@ -807,10 +809,17 @@ h1.team-name {
   font-size: 0.8em;
   color: darkorange;
 }
-.bonus {
+.bonus, .team-fouls {
   font-size: 0.8em;
-  color: lightblue;
-  margin-top: 22px;
+  /*color: lightblue;*/
+  /*color: #a52a2a;*/
+  color: #8063f5;
+  /*margin-top: 22px;*/
+}
+.team-fouls > span {
+  font-size: 2.0em;
+  color: #fff;
+  opacity: 0.8;
 }
 
 .circle {
@@ -829,7 +838,7 @@ h1.team-name {
 }
 #period {
   position: absolute;
-  top: 99px;
+  top: 106px;
   left: 128px;
   font-size: 0.9em;
   color: #a52a2a;
@@ -839,4 +848,18 @@ h1.team-name {
   text-align: center;
   display: block;
   color: lightgray;
+}
+#period span.period-change {
+  display: inline;
+  opacity: 0.5;
+  position: absolute;
+}
+#period span.increment {
+  top: 24px;
+  left: 40px;
+}
+#period span.decrement {
+  top: 22px;
+  left: 0px;
+  
 }

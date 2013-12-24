@@ -128,6 +128,11 @@ class scoresheet_controller extends base_controller
       Helpers::get_team_points($game_id, $away['team_id']);
     
     
+    // set title 
+    $this->template->title = 
+      sprintf('%s | %s %s vs. %s %s', 
+        APP_NAME, $away['name'], $away['nickname'],
+        $home['name'], $home['nickname']);
 
     echo $this->template;
   }

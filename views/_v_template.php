@@ -6,6 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
     <link rel="stylesheet" href="/css/jquery-ui-1.10.3.custom.css" type="text/css">
     <link rel="stylesheet" href="/css/main.css" type="text/css">
+    <link rel="icon" href="/css/images/b-ball.png" type="image/jpg">
 					
 	<!-- Controller Specific JS/CSS -->
     <script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
