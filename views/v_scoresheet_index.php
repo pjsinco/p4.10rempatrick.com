@@ -4,18 +4,18 @@
 <div class='scoreboard grid_4'>
   <div class="score">
     <?=$home_score?> 
-    <div class="bonus">
-      BONUS<br>
-      <span class="circle lit">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    </div>
+<!--     <div class="bonus"> -->
+<!--       BONUS<br> -->
+<!--       <span class="circle lit">&nbsp;&nbsp;&nbsp;&nbsp;</span> -->
+<!--     </div> -->
     <?=$home_fouls?>
   </div>
   <div class="score">
     <?=$away_score?>
-    <div class="bonus">
-      BONUS<br>
-      <span class="circle">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    </div>
+<!--     <div class="bonus"> -->
+<!--       BONUS<br> -->
+<!--       <span class="circle">&nbsp;&nbsp;&nbsp;&nbsp;</span> -->
+<!--     </div> -->
     <?=$away_fouls?>
   </div>
   <?=$period?>
