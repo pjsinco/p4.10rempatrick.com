@@ -863,3 +863,6 @@ h1.team-name {
   left: 0px;
   
 }
+.selected {
+  background-color: darkslategrey;
+}
