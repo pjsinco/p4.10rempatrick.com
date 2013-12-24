@@ -16,9 +16,8 @@
 
 body {
   min-width: 960px;
-  /*background-color: #8eacd8;*/
-  /*background-color: #afc7ec;*/
-  background-color: darkorange;
+  /*background-color: darkorange;*/
+  background-color: cadetblue;
   /*background-image: url(images/court.jpg);*/
   font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
   /*color: #5e5e5e;*/
@@ -738,10 +737,10 @@ button.play:active {
   
 }
 .team-score {
-  font-size: 50px;
+  font-size: 80px;
   color: #fff;
   display: block;
-  margin-top: 10px;
+  margin-top: 25px;
   /*position: absolute;*/
   /*top: 37px;*/
   /*left: 43px;*/
@@ -792,6 +791,7 @@ span.get-stats {
 }
 h1.team-name {
   margin: 0 0 10px 0;
+  color: darkorange;
 }
 .scoreboard {
   height: 160px;
@@ -805,13 +805,15 @@ h1.team-name {
   text-transform: uppercase;
   letter-spacing: 5px;
   font-size: 0.8em;
+  color: darkorange;
 }
 .bonus {
   font-size: 0.8em;
   color: lightblue;
-  margin-top: 12px;
+  margin-top: 22px;
 }
-.circle{
+
+.circle {
   /*width: 100px;*/
   /*height: 100px;*/
   border-radius: 50%;
@@ -820,5 +822,21 @@ h1.team-name {
   /*line-height: 100px;*/
   text-align: center;
   background-color: red;
-  z-index: 100;
+  opacity: 0.4;
+}
+.lit {
+  opacity: 1.0;
+}
+#period {
+  position: absolute;
+  top: 99px;
+  left: 128px;
+  font-size: 0.9em;
+  color: #a52a2a;
+}
+#period > span {
+  font-size: 25px;
+  text-align: center;
+  display: block;
+  color: lightgray;
 }
