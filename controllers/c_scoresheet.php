@@ -55,7 +55,10 @@ class scoresheet_controller extends base_controller
         //$home_players_playing[$i - 1];
     }
     $this->template->content->home->team =
-      $home['name'] . ' ' . $home['nickname']; 
+      array(
+        'name' => $home['name'],
+        'nickname' => $home['nickname']
+      );
     $this->template->content->home->bench = 
       View::instance('v_team_bench');
     $this->template->content->home->bench->game_id = $game_id;
@@ -82,7 +85,10 @@ class scoresheet_controller extends base_controller
     }
     //$this->template->content->away->players = $away_players_playing;
     $this->template->content->away->team =
-      $away['name'] . ' ' . $away['nickname']; 
+      array(
+        'name' => $away['name'],
+        'nickname' => $away['nickname']
+      );
     $this->template->content->away->bench = 
       View::instance('v_team_bench');
     $this->template->content->away->bench->game_id = 

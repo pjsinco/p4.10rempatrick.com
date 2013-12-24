@@ -1,5 +1,5 @@
-<h1><?=$team?></h1>
-<div id="<?=$team?>"><?=$team?></div>
+<span><?=$team['name']?></span>
+<h1 class='team-name'><?=$team['nickname']?></h1>
 <ul class='players'>
   <?php for ($i = 1; $i <= 5; $i++): ?>
   <li title="player-id-<?=${'player_' . $i}->player['player_id']?>" id="player-<?=$i?>-<?=${'player_' . $i}->player['player_id']?>" class='player-card'>

@@ -1,11 +1,22 @@
-<div class='grid_4'>
+<div class='team grid_4'>
   <?=$home?>
 </div>
-<div class='grid_4'>
-  <?//=$clock?>
-  <?=$home_score?> <?=$away_score?>
+<div class='scoreboard grid_4'>
+  <div class="score">
+    <?=$home_score?> 
+    <div class="bonus">
+      BONUS
+    </div>
+  </div>
+  <div class="score">
+    <?=$away_score?>
+    <div class="bonus">
+      BONUS<br>
+      <span class="circle">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </div>
 </div>
-<div class='grid_4'>
+<div class='team grid_4'>
   <?=$away?>
 </div>
 <div class='grid_12 spacer'></div>
