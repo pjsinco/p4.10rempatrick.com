@@ -25,10 +25,6 @@ class player_controller extends base_controller
     
   }
 
-  public function increment_stat($game_id, $player_id, $stat) {
-    
-  }
-
   public function p_increment_stat($game_id, $player_id, $stat) {
     $q = "
       UPDATE plays_in
