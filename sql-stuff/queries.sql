@@ -99,6 +99,11 @@ alter table plays_in
   change fg3made fg3 smallint not null default 0,
   change ft_made ft smallint not null default 0
       
+alter table plays_in
+  change assts a smallint not null default 0
+
+alter table game
+  add column cur_per tinyint not null default 1
 
 alter table players
   modify column points smallint not null default 0,
@@ -147,3 +152,16 @@ FROM plays_in pi inner join player p
   on pi.player = p.player_id
 WHERE pi.player = 61
   AND pi.game = 89
+
+select
+  concat(p.first_name, ' ', p.last_name) as full_name,
+  p.pos, p.jersey,
+  sum((pi.fg2 * 2) + (pi.fg3 * 3) + (pi.ft * 1)) as pts,
+  sum(pi.fg2miss + pi.fg2) as fg2att,
+  sum(pi.ft_miss + pi.ft) as ft_att,
+  sum(pi.fg3miss + pi.fg3) as fg3att,
+  pi.pf, pi.a, pi.reb
+from plays_in pi inner join player p
+  on pi.player = p.player_id
+where pi.player = 74
+  and pi.game = 100

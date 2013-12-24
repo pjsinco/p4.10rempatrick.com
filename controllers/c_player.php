@@ -24,6 +24,27 @@ class player_controller extends base_controller
   public function points($game_id, $player_id) {
     
   }
+  
+  public function stats_display($game_id, $player_id) {
+    $client_files_body = Array(
+      '/js/player_stats_display.js'
+    );
+    $this->template->client_files_body =
+      Utils::load_client_files($client_files_body);
+
+    $this->template->content = 
+      View::instance('v_player_stats_display');
+
+    $this->template->content->stats =
+      Helpers::get_player_stats(100, 74);
+    
+    echo $this->template;
+  }
+
+  public function p_stats_display($game_id, $player_id) {
+    $data = Helpers::get_player_stats($game_id, $player_id);
+    echo json_encode($data);  
+  }
 
   public function p_increment_stat($game_id, $player_id, $stat) {
     $q = "

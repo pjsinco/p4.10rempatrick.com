@@ -5,6 +5,35 @@ require_once APP_PATH . '/config/constants.php';
 class Helpers 
 {
   /*--------------------------------------------------------------------
+  Gets the player's stats
+  Param:
+    $game_id int
+    $player_id int
+  Returns:
+    An array of the player's stats for the game
+  --------------------------------------------------------------------*/ 
+  public static function get_player_stats($game_id, $player_id) {
+    $q = "
+      SELECT
+        CONCAT(p.first_name, ' ', p.last_name) AS full_name,
+        p.pos, p.jersey,
+        SUM((pi.fg2 * 2) + (pi.fg3 * 3) + (pi.ft * 1)) AS pts,
+        SUM(pi.fg2miss + pi.fg2) AS fg2att,
+        SUM(pi.ft_miss + pi.ft) AS ft_att,
+        SUM(pi.fg3miss + pi.fg3) AS fg3att,
+        pi.pf, pi.a, pi.reb
+      FROM plays_in pi INNER JOIN player p
+        ON pi.player = p.player_id
+      WHERE pi.player = $player_id
+        AND pi.game = $game_id
+    ";
+
+    $stats = DB::instance(DB_NAME)->select_row($q);
+    
+    return $stats;
+  }
+
+  /*--------------------------------------------------------------------
   Gets the number of a team's fouls
   Param:
     $game_id int

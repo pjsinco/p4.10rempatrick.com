@@ -31,7 +31,8 @@ class scoresheet_controller extends base_controller
       '/js/team_display.js',
       '/js/team_display.js',
       '/js/team_substitute.js',
-      '/js/player_stat_change.js'
+      '/js/player_stat_change.js',
+      '/js/player_stats_display.js'
     );
     $this->template->client_files_body =
       Utils::load_client_files($client_files_body);

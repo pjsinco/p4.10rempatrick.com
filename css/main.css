@@ -851,7 +851,7 @@ h1.team-name {
 }
 #period span.period-change {
   display: inline;
-  opacity: 0.5;
+  opacity: 0.3;
   position: absolute;
   cursor: pointer;
 }
