@@ -26,7 +26,9 @@ class scoresheet_controller extends base_controller
       //Helpers::get_players_benched($game_id, $away['team_id']);
 
     $client_files_body = Array(
-      '/js/scoreboard_clock.js',
+      //'/js/scoreboard_clock.js',
+      '/js/scoreboard_change_period.js',
+      '/js/team_display.js',
       '/js/team_display.js',
       '/js/team_substitute.js',
       '/js/player_stat_change.js'
@@ -97,12 +99,6 @@ class scoresheet_controller extends base_controller
       Helpers::get_players_benched($game_id, $away['team_id']);
 
     /*
-     * pass clock to view
-     */
-    $this->template->content->clock =
-      View::instance('v_scoreboard_clock');
-
-    /*
      * pass game_id to view
      */
     $this->template->content->game_id = $game_id;
@@ -127,8 +123,18 @@ class scoresheet_controller extends base_controller
     $this->template->content->away_score->score = 
       Helpers::get_team_points($game_id, $away['team_id']);
     
+    /*
+     * pass period to view
+     */
+    $this->template->content->period =
+        View::instance('v_scoreboard_period');
+    $this->template->content->period->current_period =
+        Helpers::get_period($game_id);
+
     
-    // set title 
+    /*
+     * set title 
+     */
     $this->template->title = 
       sprintf('%s | %s %s vs. %s %s', 
         APP_NAME, $away['name'], $away['nickname'],

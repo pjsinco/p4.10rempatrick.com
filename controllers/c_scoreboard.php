@@ -40,8 +40,31 @@ class scoreboard_controller extends base_controller
     echo $this->template;
   }
 
+  public function period($game_id) {
+    $this->template->content = View::instance('v_scoreboard_period');
+    $client_files_body = Array(
+      '/js/scoreboard_change_period.js'
+    );
+    $this->template->client_files_body =
+      Utils::load_client_files($client_files_body);
+    
+    // pass current period to view
+    $this->template->content->current_period =
+      Helpers::get_period($game_id);
+  
+    //render view
+    echo $this->template;
+  }
+
+  public function p_change_period($game_id, $increment) {
+    // convert string 'bool' to real bool
+    $increment = ($increment == 'true' ? true : false);
+
+    $per = Helpers::change_period($game_id, $increment);
+    
+    echo $per;
+  }
 
 } // eoc
-
 
 ?>

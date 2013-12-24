@@ -25,6 +25,43 @@ class Helpers
   }
 
   /*--------------------------------------------------------------------
+  Get the current period
+  Param:
+    $game_id int
+  Returns:
+    The current period
+  --------------------------------------------------------------------*/ 
+  public static function get_period($game_id) {
+    $q = "
+      SELECT cur_per
+      FROM game
+      WHERE game_id = $game_id
+    ";
+    $period = DB::instance(DB_NAME)->select_field($q);
+    
+    return $period;
+  }
+
+  /*--------------------------------------------------------------------
+  Increment or decrement the current period
+  Param:
+    $game_id int
+    $increment boolean - false if decrementing
+  Returns:
+    The new value for the period
+  --------------------------------------------------------------------*/ 
+  public static function change_period($game_id, $increment) {
+    $q = "
+      UPDATE game
+      SET cur_per = cur_per " . (($increment) ? "+" : "-") . " 1
+      WHERE game_id = $game_id
+    ";
+    DB::instance(DB_NAME)->query($q);
+
+    return self::get_period($game_id);
+  }
+
+  /*--------------------------------------------------------------------
 
   --------------------------------------------------------------------*/ 
   public static function get_player_points($game_id, $player_id) {

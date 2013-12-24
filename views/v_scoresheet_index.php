@@ -24,14 +24,7 @@
       <span>8</span>
     </div>
   </div>
-  <div id="period">
-    PERIOD<br>
-    <span class='period-change decrement'>-</span>
-    <span>
-      2 
-    </span>
-    <span class='period-change increment'>+</span>
-  </div>
+  <?=$period?>
 </div>
 <div class='team grid_4'>
   <?=$away?>

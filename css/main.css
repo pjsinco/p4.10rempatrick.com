@@ -653,7 +653,7 @@ ul.players li {
 }
 
 .player-name {
-  background-color: honeydew;
+  background-color: azure;
   color: #40586b;
   padding: 2px 0px 2px 6px;
   text-transform: uppercase;
@@ -793,7 +793,7 @@ span.get-stats {
 }
 h1.team-name {
   margin: 0 0 10px 0;
-  color: darkorange;
+  color: azure;
 }
 .scoreboard {
   height: 200px;
@@ -807,7 +807,7 @@ h1.team-name {
   text-transform: uppercase;
   letter-spacing: 5px;
   font-size: 0.8em;
-  color: darkorange;
+  color: azure;
 }
 .bonus, .team-fouls {
   font-size: 0.8em;
@@ -853,6 +853,7 @@ h1.team-name {
   display: inline;
   opacity: 0.5;
   position: absolute;
+  cursor: pointer;
 }
 #period span.increment {
   top: 24px;
