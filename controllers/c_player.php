@@ -41,7 +41,8 @@ class player_controller extends base_controller
       'player_points' => 
         Helpers::get_player_points($game_id, $player_id),
       'team_id' => $team_id,
-      'team_points' => Helpers::get_team_points($game_id, $team_id)
+      'team_points' => Helpers::get_team_points($game_id, $team_id),
+      'team_fouls' => Helpers::get_team_fouls($game_id, $team_id)
     );
     echo json_encode($data);
   }

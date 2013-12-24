@@ -5,6 +5,26 @@ require_once APP_PATH . '/config/constants.php';
 class Helpers 
 {
   /*--------------------------------------------------------------------
+  Gets the number of a team's fouls
+  Param:
+    $game_id int
+    $team_id int
+  Returns:
+    The number of fouls
+  --------------------------------------------------------------------*/ 
+  public static function get_team_fouls($game_id, $team_id) {
+    $q = "
+      SELECT sum(pf)
+      FROM plays_in
+      WHERE game = $game_id
+        AND team = $team_id
+    ";
+    $team_fouls = DB::instance(DB_NAME)->select_field($q);
+
+    return $team_fouls;
+  }
+
+  /*--------------------------------------------------------------------
   Gets the team ID for a player
   Param:
     $game_id int

@@ -65,6 +65,26 @@ class scoreboard_controller extends base_controller
     echo $per;
   }
 
+  public function team_fouls($game_id, $team_id) {
+    $this->template->content = View::instance('v_scoreboard_team_fouls');
+    $client_files_body = Array(
+      
+    );
+    $this->template->client_files_body =
+      Utils::load_client_files($client_files_body);
+
+    $this->template->content->fouls =
+      Helpers::get_team_fouls($game_id, $team_id);
+
+    //render view
+    echo $this->template;
+  }
+
+  public function p_team_fouls($game_id, $team_id) {
+    
+    
+  }
+
 } // eoc
 
 ?>

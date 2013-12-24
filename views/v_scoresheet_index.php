@@ -8,10 +8,7 @@
       BONUS<br>
       <span class="circle lit">&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
-    <div class="team-fouls">
-      FOULS<br>
-      <span>7</span>
-    </div>
+    <?=$home_fouls?>
   </div>
   <div class="score">
     <?=$away_score?>
@@ -19,10 +16,7 @@
       BONUS<br>
       <span class="circle">&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
-    <div class="team-fouls">
-      FOULS<br>
-      <span>8</span>
-    </div>
+    <?=$away_fouls?>
   </div>
   <?=$period?>
 </div>

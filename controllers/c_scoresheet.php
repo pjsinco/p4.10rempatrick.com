@@ -107,11 +107,22 @@ class scoresheet_controller extends base_controller
      * pass home score to view
      */
     $this->template->content->home_score = 
-        View::instance('v_scoreboard_team_score');
+      View::instance('v_scoreboard_team_score');
     $this->template->content->home_score->team_id = $home['team_id'];
     $this->template->content->home_score->side = 'home';
     $this->template->content->home_score->score = 
       Helpers::get_team_points($game_id, $home['team_id']);
+
+    /*
+     * pass home fouls to view
+     */
+    $this->template->content->home_fouls =
+      View::instance('v_scoreboard_team_fouls');
+    $this->template->content->home_fouls->team_id = 
+      $home['team_id'];
+    $this->template->content->home_fouls->fouls =
+      Helpers::get_team_fouls($game_id, $home['team_id']);
+    
     
     /*
      * pass away score to view
@@ -122,6 +133,16 @@ class scoresheet_controller extends base_controller
     $this->template->content->away_score->side = 'away';
     $this->template->content->away_score->score = 
       Helpers::get_team_points($game_id, $away['team_id']);
+
+    /*
+     * pass away fouls to view
+     */
+    $this->template->content->away_fouls =
+      View::instance('v_scoreboard_team_fouls');
+    $this->template->content->away_fouls->team_id = 
+      $away['team_id'];
+    $this->template->content->away_fouls->fouls =
+      Helpers::get_team_fouls($game_id, $away['team_id']);
     
     /*
      * pass period to view
