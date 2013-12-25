@@ -877,9 +877,21 @@ h1.team-name {
   -moz-border-radius: 12px;
   margin-bottom: 10px;
 }
-
+.welcome form {
+  position: absolute;
+  top: 64px;
+  left: 113px;
+}
 .welcome input {
   position: absolute;
-  top: 134px;
-  left: 160px;
+  top: 56px;
+  width: 255px;
+}
+div.welcome .error {
+  color: #f00;
+  padding: 8px;
+  position: absolute;
+  top: 84px;
+  left: 13px;
+
 }

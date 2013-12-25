@@ -19,7 +19,7 @@ class game_controller extends base_controller
   }
 
   // new game is initated by creating home, away teams
-  public function create() {
+  public function create($error = null) {
     $this->template->title = 'Create game';
 
     $client_files_body = Array(
@@ -42,12 +42,17 @@ class game_controller extends base_controller
     // pass list of teams to view
     $this->template->content->teams = $teams;
     $this->template->content->app_name = APP_NAME;
+    $this->template->content->error = $error;
 
     // render view
     echo $this->template;
   }
 
   public function p_create() {
+
+    if ($_POST['home'] == $_POST['away']) {
+      Router::redirect('/game/create/error');
+    }
 
     // create game
     $data = Array(

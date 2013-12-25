@@ -25,6 +25,11 @@
     </select>
     <br>
   
+    <?php if(isset($error)): ?>
+    <div class="error">
+      Please choose different teams.    
+    </div>
+    <?php endif; ?>
     <input class='submit' type='submit' value='Score a game'>
   
   </form>

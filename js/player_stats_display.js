@@ -66,7 +66,7 @@
   });
 
 
-  console.log(content);
+  //console.log(content);
   
   $(document).ready(function() {
     $.ajax({
