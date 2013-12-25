@@ -4,7 +4,8 @@
   var gameId = url[url.length - 1]; 
 
   // a gameplay button is clicked, so update stats, display  
-  $("button[class!='substitute']").click(function(event){
+  //$("button[class!='substitute']").click(function(event){
+  $("button[class^='play']").click(function(event){
     var stat = 
       $(event.target).attr('class').split(' ')[1]; // chop off 'play'
 
@@ -20,7 +21,7 @@
       url: '/player/p_increment_stat/' + gameId + '/' +
         playerId + '/' + stat,
       success: function(response) {
-        console.log(response);
+        //console.log(response);
         var data = $.parseJSON(response);
         $('div#player-' + playerId)
           .children(':first')

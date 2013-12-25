@@ -26,13 +26,14 @@ class scoresheet_controller extends base_controller
       //Helpers::get_players_benched($game_id, $away['team_id']);
 
     $client_files_body = Array(
-      //'/js/scoreboard_clock.js',
+      '/js/jquery.dim-background.js',
       '/js/scoreboard_change_period.js',
       '/js/team_display.js',
       '/js/team_display.js',
       '/js/team_substitute.js',
       '/js/player_stat_change.js',
-      '/js/player_stats_display.js'
+      '/js/player_stats_display.js',
+      '/js/game_end_game.js'
     );
     $this->template->client_files_body =
       Utils::load_client_files($client_files_body);

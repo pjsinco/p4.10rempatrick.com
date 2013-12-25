@@ -20,6 +20,9 @@
   </div>
   <?=$period?>
   <button id='end-game' type="submit">End game</button>
+<!--   <div id='confirmation'> -->
+<!--      <p>Are you sure you want to end the game?</p> -->
+<!--   </div> -->
 </div>
 <div class='team grid_4'>
   <?=$away?>
