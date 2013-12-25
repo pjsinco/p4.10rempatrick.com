@@ -110,6 +110,12 @@ class game_controller extends base_controller
   public function boxscore($game_id) {
     $this->template->content = View::instance('v_game_boxscore');
 
+    $client_files_body = Array(
+      '/js/game_boxscore.js'
+    );
+    $this->template->client_files_body = 
+      Utils::load_client_files($client_files_body);
+
     $teams = Helpers::get_teams_playing($game_id);
     $this->template->content->home = $teams['home'];
     $this->template->content->away = $teams['away'];

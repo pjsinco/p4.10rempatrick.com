@@ -1,7 +1,9 @@
-<div class="prefix_3 grid_6 suffix_3">
-  <h1>FINAL BOXSCORE</h1>
-  <h3><?=$home_totals['TEAM']?></h3>
-  <table id="home-boxscore" border="0">
+<div class="grid_3">&nbsp;</div>
+<div class='grid_6 display'>
+  <h1 class='final-boxscore'>FINAL BOXSCORE</h1>
+  <button id='new-game' type="input">New game</button>
+  <h3 class='team-boxscore'><?=$home_totals['TEAM']?></h3>
+  <table class='boxscore' id="home-boxscore" border="0">
     <thead>
       <tr>
         <th>Player</th>
@@ -38,8 +40,8 @@
       </tr>
     </tfoot>
   </table>
-  <h3><?=$away_totals['TEAM']?></h3>
-  <table id="away-boxscore" border="0">
+  <h3 class='team-boxscore'><?=$away_totals['TEAM']?></h3>
+  <table class='boxscore' id="away-boxscore" border="0">
     <thead>
       <tr>
         <th>Player</th>
@@ -63,6 +65,8 @@
         <td><?=$player_stats['PTS']?></td>
       </tr>
     <?php endforeach; ?>
+    </tbody>
+    <tfoot>
       <tr>
         <td><strong>TOTALS</strong></td>
         <td><strong><?=$away_totals['FGM']?>-<?=$away_totals['FGA']?></strong></td>
@@ -72,6 +76,7 @@
         <td><strong><?=$away_totals['AST']?></strong></td>
         <td><strong><?=$away_totals['PTS']?></strong></td>
       </tr>
-    </tbody>
+    </tfoot>
   </table>
 </div>
+<div class="grid_3">&nbsp;</div>
