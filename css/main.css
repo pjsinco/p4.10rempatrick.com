@@ -707,6 +707,9 @@ button.play {
 button#end-game {
   color: #666;
   width: 30%;
+  position: absolute;
+  top: 172px;
+  left: 221px;
 }
 button#end-game:hover {
   background-color: darkslategrey;
