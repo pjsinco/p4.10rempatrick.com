@@ -14,7 +14,7 @@ class Helpers
   public static function get_team_totals($game_id, $team_id) {
     $q = "
       SELECT
-        t.name, t.nickname,
+        CONCAT(t.name, ' ' ,t.nickname) AS TEAM,
         SUM(pi.reb) AS REB,
         SUM(pi.a) AS AST,
         SUM(pi.pf) AS PF,
