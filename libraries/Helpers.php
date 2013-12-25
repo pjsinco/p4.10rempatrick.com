@@ -5,6 +5,37 @@ require_once APP_PATH . '/config/constants.php';
 class Helpers 
 {
   /*--------------------------------------------------------------------
+  Retrieves a team's totals for a game
+  Param:
+    $game_id int
+  Returns:
+    An associatiave array of the totals
+  --------------------------------------------------------------------*/ 
+  public static function get_team_totals($game_id, $team_id) {
+    $q = "
+      SELECT
+        t.name, t.nickname,
+        SUM(pi.reb) AS REB,
+        SUM(pi.a) AS AST,
+        SUM(pi.pf) AS PF,
+        SUM(pi.fg2miss + pi.fg2) AS FGA,
+        SUM(pi.fg2) AS FGM,
+        SUM(pi.fg3miss + pi.fg3) AS 3PA,
+        SUM(pi.fg3) AS 3PM,
+        SUM(pi.ft_miss + pi.ft) AS FTA,
+        SUM(pi.ft) AS FTM,
+        SUM((pi.fg2 * 2) + (pi.fg3 * 3) + (pi.ft)) AS PTS
+      FROM plays_in pi INNER JOIN team t
+        ON pi.team = t.team_id 
+      WHERE pi.game = $game_id
+        AND pi.team = $team_id
+    ";
+    $totals = DB::instance(DB_NAME)->select_row($q);
+
+    return $totals;
+  }
+
+  /*--------------------------------------------------------------------
   Retrieves team IDs of teams playing
   Param:
     $game_id int
@@ -183,7 +214,8 @@ class Helpers
   --------------------------------------------------------------------*/ 
   public static function get_team_points($game_id, $team_id) {
     $q = "
-      SELECT SUM((fg2 * " . FG2 . ") + (fg3 * " . FG3 . ") + (ft * " . FT . ")) 
+      SELECT SUM((fg2 * " . FG2 . ") + (fg3 * " . FG3 . 
+        ") + (ft * " . FT . ")) 
       FROM plays_in
       WHERE game = $game_id
         AND team = $team_id

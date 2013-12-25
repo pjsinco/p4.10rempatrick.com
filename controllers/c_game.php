@@ -114,14 +114,17 @@ class game_controller extends base_controller
     $this->template->content->home = $teams['home'];
     $this->template->content->away = $teams['away'];
     
+    // get 2D array of player stats for each team and pass to view
     $h_players_stats = Helpers::get_team_stats($game_id, $teams['home']);
     $a_players_stats = Helpers::get_team_stats($game_id, $teams['away']);
-
-    //echo Debug::dump($h_players_stats);
-    //echo Debug::dump($a_players_stats);
-
     $this->template->content->home_players_stats = $h_players_stats;
     $this->template->content->away_players_stats = $a_players_stats;
+
+    // get team totals and pass to view
+    $home_totals = Helpers::get_team_totals($game_id, $teams['home']);
+    $away_totals = Helpers::get_team_totals($game_id, $teams['away']);
+    $this->template->content->home_totals = $home_totals;
+    $this->template->content->away_totals = $away_totals;
 
     // render view
     echo $this->template;
