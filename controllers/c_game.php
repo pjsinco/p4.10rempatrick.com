@@ -107,11 +107,25 @@ class game_controller extends base_controller
     echo $this->template;
   }
 
-  public function p_end_game($game_id) {
+  public function boxscore($game_id) {
+    $this->template->content = View::instance('v_game_boxscore');
+
+    $teams = Helpers::get_teams_playing($game_id);
+    $this->template->content->home = $teams['home'];
+    $this->template->content->away = $teams['away'];
     
+    $h_players_stats = Helpers::get_team_stats($game_id, $teams['home']);
+    $a_players_stats = Helpers::get_team_stats($game_id, $teams['away']);
 
+    //echo Debug::dump($h_players_stats);
+    //echo Debug::dump($a_players_stats);
+
+    $this->template->content->home_players_stats = $h_players_stats;
+    $this->template->content->away_players_stats = $a_players_stats;
+
+    // render view
+    echo $this->template;
   }
-
 
 
 }

@@ -927,3 +927,8 @@ table.player-stats th {
 table.player-stats td {
   /*background-color: #fff;*/
 }
+table#boxscore td, table#boxscore th {
+  /*border: 1px solid black;*/
+  /*padding: 0.5em;*/
+  /*color: fuchsia;*/
+}

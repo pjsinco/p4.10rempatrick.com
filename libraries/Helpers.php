@@ -5,7 +5,56 @@ require_once APP_PATH . '/config/constants.php';
 class Helpers 
 {
   /*--------------------------------------------------------------------
-  Gets the player's stats
+  Retrieves team IDs of teams playing
+  Param:
+    $game_id int
+  Returns:
+    An associatiave array of the teams playing
+  --------------------------------------------------------------------*/ 
+  public static function get_teams_playing($game_id) {
+    $q = "
+      SELECT home, away
+      FROM game
+      WHERE game_id = $game_id
+    ";
+
+    $teams = DB::instance(DB_NAME)->select_row($q);
+
+    return $teams;
+
+  }
+
+  /*--------------------------------------------------------------------
+  Retrieves team stats
+  Param:
+    $game_id int
+    $team_id int
+  Returns:
+    A 2D array of the team's stats for the game
+  --------------------------------------------------------------------*/ 
+  public static function get_team_stats($game_id, $team_id) {
+    $team_stats = array(); // 2D array of player stats
+    
+    // get array of player ids for team
+    $q = "
+      SELECT player
+      FROM plays_in
+      WHERE game = $game_id
+        AND team = $team_id
+    ";
+    $team_player_ids = DB::instance(DB_NAME)->select_rows($q);
+    
+
+    foreach ($team_player_ids as $id) {
+      $player_line = self::get_player_stats($game_id, $id['player']);
+      array_push($team_stats, $player_line);
+    }
+  
+    return $team_stats;
+  }
+
+  /*--------------------------------------------------------------------
+  Retrieves a player's stats
   Param:
     $game_id int
     $player_id int
@@ -16,7 +65,7 @@ class Helpers
     $q = "
       SELECT
         CONCAT(p.first_name, ' ', p.last_name) AS full_name,
-        SUM((pi.fg2 * 2) + (pi.fg3 * 3) + (pi.ft * 1)) AS pts,
+        SUM((pi.fg2 * 2) + (pi.fg3 * 3) + (pi.ft * 1)) AS PTS,
         SUM(pi.fg2miss + pi.fg3miss + pi.fg3 + pi.fg2) AS FGA,
         SUM(pi.fg2 + pi.fg3) AS FGM,
         SUM(pi.ft_miss + pi.ft) AS FTA,
