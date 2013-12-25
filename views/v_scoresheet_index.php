@@ -19,6 +19,7 @@
     <?=$away_fouls?>
   </div>
   <?=$period?>
+  <button id='end-game' type="submit">End game</button>
 </div>
 <div class='team grid_4'>
   <?=$away?>

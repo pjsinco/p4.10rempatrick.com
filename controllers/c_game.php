@@ -89,8 +89,8 @@ class game_controller extends base_controller
 
       DB::instance(DB_NAME)->insert_row('plays_in', $player_data);
     }
-
   }
+
   public function gameplay() {
 
     $this->template->content = View::instance('v_game_gameplay');
@@ -105,6 +105,10 @@ class game_controller extends base_controller
 
     // render view
     echo $this->template;
+  }
+
+  public function p_end_game($game_id) {
+    
 
   }
 

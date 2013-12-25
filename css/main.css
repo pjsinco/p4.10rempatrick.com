@@ -686,23 +686,31 @@ ul.players li {
 .misses{
   top: 49px;
 }
-button.play {
+button {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  color: #fff;
-  border: none;
-  width: 32px;
   cursor: pointer;
+  border: none;
+
 }
-button.play:focus {
+button:focus {
   outline: none;
+}
+button.play {
+  color: #fff;
+  width: 32px;
 }
 .makes button.play:hover {
   background-color: darkgreen;
 }
-button.play:active {
-
+button#end-game {
+  color: #666;
+  width: 30%;
+}
+button#end-game:hover {
+  background-color: darkslategrey;
+  color: #fff;
 }
 .makes button {
   /*background-color: mediumspringgreen;*/
