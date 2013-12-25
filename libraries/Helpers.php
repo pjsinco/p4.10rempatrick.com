@@ -16,12 +16,16 @@ class Helpers
     $q = "
       SELECT
         CONCAT(p.first_name, ' ', p.last_name) AS full_name,
-        p.pos, p.jersey,
         SUM((pi.fg2 * 2) + (pi.fg3 * 3) + (pi.ft * 1)) AS pts,
-        SUM(pi.fg2miss + pi.fg2) AS fg2att,
-        SUM(pi.ft_miss + pi.ft) AS ft_att,
-        SUM(pi.fg3miss + pi.fg3) AS fg3att,
-        pi.pf, pi.a, pi.reb
+        SUM(pi.fg2miss + pi.fg3miss + pi.fg3 + pi.fg2) AS FGA,
+        SUM(pi.fg2 + pi.fg3) AS FGM,
+        SUM(pi.ft_miss + pi.ft) AS FTA,
+        pi.ft AS FTM,
+        SUM(pi.fg3miss + pi.fg3) AS 3PA,
+        pi.fg3 as 3PM,
+        pi.pf AS PF, 
+        pi.a AS AST, 
+        pi.reb AS REB
       FROM plays_in pi INNER JOIN player p
         ON pi.player = p.player_id
       WHERE pi.player = $player_id
