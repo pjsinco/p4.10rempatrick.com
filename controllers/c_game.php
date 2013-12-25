@@ -41,6 +41,7 @@ class game_controller extends base_controller
 
     // pass list of teams to view
     $this->template->content->teams = $teams;
+    $this->template->content->app_name = APP_NAME;
 
     // render view
     echo $this->template;

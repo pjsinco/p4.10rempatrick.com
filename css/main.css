@@ -867,3 +867,19 @@ h1.team-name {
 .selected {
   background-color: darkslategrey;
 }
+.welcome {
+  margin-top: 100px;
+  background-color: azure;
+  height: 160px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.welcome input {
+  position: absolute;
+  top: 134px;
+  left: 160px;
+}
