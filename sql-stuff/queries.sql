@@ -71,6 +71,9 @@ alter table player
 alter table player
   modify column pos ENUM('SG', 'SF', 'C', 'SG', 'PG', 'PF') NOT NULL
 
+alter table player
+  modify column player_id int(11) AUTO_INCREMENT UNIQUE PRIMARY KEY
+
 
 alter table games
   add column (periods int(11) NOT NULL)
@@ -188,3 +191,15 @@ FROM plays_in pi INNER JOIN team t
   ON pi.team = t.team_id 
 WHERE pi.game = 99
   AND pi.team = 1
+
+alter table game
+  drop column periods,
+  drop column period_minutes,
+  drop column home_points,
+  drop column away_points
+
+load data local infile '~/Sites/p4.10rempatrick.com/misc/nba-roster.csv'
+   into table player   
+   fields terminated by ','   
+   (team, jersey, first_name, last_name, pos);
+
