@@ -1,9 +1,9 @@
 <div class="grid_2">&nbsp;</div>
 <div class='grid_8 display'>
   <h1 class='final-boxscore'>FINAL BOXSCORE</h1>
-  <button id='new-game' type="input">New game</button>
+  <button id='new-game' type="submit">New game</button>
   <h3 class='team-boxscore'><?=$home_totals['TEAM']?></h3>
-  <table class='boxscore' id="home-boxscore" border="0">
+  <table class='boxscore' id="home-boxscore">
     <thead>
       <tr>
         <th>Player</th>
@@ -30,7 +30,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <td><strong>TOTALS</td>
+        <td><strong>TOTALS</strong></td>
         <td><strong><?=$home_totals['FGM']?>-<?=$home_totals['FGA']?></strong></td>
         <td><strong><?=$home_totals['3PM']?>-<?=$home_totals['3PA']?></strong></td>
         <td><strong><?=$home_totals['FTM']?>-<?=$home_totals['FGA']?></strong></td>
@@ -41,7 +41,7 @@
     </tfoot>
   </table>
   <h3 class='team-boxscore'><?=$away_totals['TEAM']?></h3>
-  <table class='boxscore' id="away-boxscore" border="0">
+  <table class='boxscore' id="away-boxscore">
     <thead>
       <tr>
         <th>Player</th>

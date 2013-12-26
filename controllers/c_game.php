@@ -8,7 +8,7 @@ class game_controller extends base_controller
 
   public function index() {
     // add title
-    $this->template->title = 'Basketball Scoresheet';
+    $this->template->title = APP_NAME;
     
     // add view
     $this->template->content = View::instance('v_game_index');
@@ -89,6 +89,8 @@ class game_controller extends base_controller
   }
 
   public function boxscore($game_id) {
+    // add title
+    $this->template->title = APP_NAME;
     $this->template->content = View::instance('v_game_boxscore');
 
     $client_files_body = Array(
