@@ -1,5 +1,5 @@
-<div class="grid_3">&nbsp;</div>
-<div class='grid_6 display'>
+<div class="grid_2">&nbsp;</div>
+<div class='grid_8 display'>
   <h1 class='final-boxscore'>FINAL BOXSCORE</h1>
   <button id='new-game' type="input">New game</button>
   <h3 class='team-boxscore'><?=$home_totals['TEAM']?></h3>
@@ -79,4 +79,4 @@
     </tfoot>
   </table>
 </div>
-<div class="grid_3">&nbsp;</div>
+<div class="grid_2">&nbsp;</div>

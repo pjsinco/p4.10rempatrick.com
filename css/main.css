@@ -922,10 +922,22 @@ div.welcome .error {
   height: 100%;
   border-collapse: collapse;
 } 
+.boxscore {
+  width: 100%;
+}
 .boxscore, .boxscore td, .boxscore th {
   /*border: 1px solid #000;*/
   padding: 0px 10px;
+  text-align: left;
   vertical-align: bottom;
+  /*width: 100%;*/
+}
+.boxscore td + td,
+.boxscore th + th {
+  text-align: right;
+}
+
+.boxscore tr {
   width: 100%;
 }
 .team-boxscore {
@@ -943,7 +955,7 @@ div.welcome .error {
 }
 #new-game {
   position: absolute;
-  left: 402px;
+  left: 312px;
   top: 33px;
   color: #fff;
 }
