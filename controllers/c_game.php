@@ -136,6 +136,5 @@ class game_controller extends base_controller
     echo $this->template;
   }
 
-
 }
 ?>

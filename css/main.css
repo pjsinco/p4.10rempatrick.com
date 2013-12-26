@@ -692,6 +692,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   border: none;
+  color: #fff;
 
 }
 button:focus {
@@ -712,7 +713,7 @@ button#end-game {
   left: 221px;
 }
 button#end-game:hover {
-  background-color: darkslategrey;
+  background-color: #999;
   color: #fff;
 }
 .makes button {
@@ -804,7 +805,7 @@ span.get-stats {
 }
 h1.team-name {
   margin: 0 0 10px 0;
-  color: azure;
+  color: #fff;
 }
 .scoreboard {
   height: 152px;
@@ -944,4 +945,8 @@ div.welcome .error {
 }
 button#new-game:hover {
   background-color: #999;
+}
+button.substitute:hover {
+  background-color: #999;
+
 }

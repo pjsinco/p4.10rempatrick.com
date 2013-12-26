@@ -18,7 +18,7 @@
         resizable: false,
         buttons: {
           Yes: function() {
-            $(this).dialog('close');
+            document.location.href = '/game/boxscore/' + gameId;
           },
           No: function() {
             $(this).dialog('close');
