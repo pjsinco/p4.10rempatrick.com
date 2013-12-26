@@ -948,7 +948,9 @@ div.welcome .error {
 button#new-game:hover {
   background-color: #999;
 }
+button.substitute {
+  color: #333;
+}
 button.substitute:hover {
   background-color: #999;
-
 }
