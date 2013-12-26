@@ -2,7 +2,7 @@
 <h1 class='team-name'><?=$team['nickname']?></h1>
 <ul class='players'>
   <?php for ($i = 1; $i <= 5; $i++): ?>
-  <li title="player-id-<?=${'player_' . $i}->player['player_id']?>" id="player-<?=$i?>-<?=${'player_' . $i}->player['player_id']?>" class='player-card'>
+  <li title="<?=${'player_' . $i}->player['first_name']?> <?=${'player_' . $i}->player['last_name']?>" id="player-<?=$i?>-<?=${'player_' . $i}->player['player_id']?>" class='player-card'>
     <div class="player-name">
       <span class="get-stats ui-icon ui-icon-calculator"></span>
       <span class="sub ui-icon ui-icon-circle-triangle-e"></span>

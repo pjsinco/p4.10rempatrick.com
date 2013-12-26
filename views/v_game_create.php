@@ -27,7 +27,7 @@
   
     <?php if(isset($error)): ?>
     <div class="error">
-      Please choose different teams.    
+      Please make sure the teams are different.
     </div>
     <?php endif; ?>
     <input class='submit' type='submit' value='Score a game'>

@@ -98,7 +98,9 @@ class team_controller extends base_controller
     $where = "WHERE game = $game_id and player = $player_in";
     $success_in = DB::instance(DB_NAME)->update_row('plays_in', $data, $where);
 
-    echo $index;
+    // get player's name
+    $name = Helpers::get_player_name($player_in);
+    echo $name;
     //echo "game_id: $game_id; subbing: $player_out is out; $player_in is in\n";
     //echo "swap " . ($success_out + $success_in == 2 ? "succeeded" : "failed");
   }

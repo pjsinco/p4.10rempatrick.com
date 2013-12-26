@@ -52,9 +52,8 @@
         + gameId + '/' + playerOut + '/' + playerIn 
         + '/' + playerIndex,
       success: function(response) {
-        console.log(response);
         $("li[id$='-" + playerOut + "']").
-          replaceWith("<li class='player-card' title='player-id-'" 
+          replaceWith("<li class='player-card' title='" + response + '"'
             + playerIn + "' id='player-" + playerIndex + "-" 
             + playerIn + "'>");
         location.reload();

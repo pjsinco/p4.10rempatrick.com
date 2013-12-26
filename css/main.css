@@ -863,7 +863,7 @@ h1.team-name {
 }
 #period span.period-change {
   display: inline;
-  opacity: 0.3;
+  opacity: 0.5;
   position: absolute;
   cursor: pointer;
 }
@@ -902,9 +902,11 @@ h1.team-name {
 div.welcome .error {
   color: #f00;
   padding: 8px;
+  font-size: 13px;
+  width: 100%;
   position: absolute;
   top: 84px;
-  left: 13px;
+  /*left: 13px;*/
 }
 .ui-tooltip {
   font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
@@ -953,4 +955,8 @@ button.substitute {
 }
 button.substitute:hover {
   background-color: #999;
+  color: #fff;
+}
+.welcome h1 {
+  color: darkorange;
 }

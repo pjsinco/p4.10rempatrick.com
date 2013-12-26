@@ -342,9 +342,17 @@ class Helpers
     return $game;
   }
 
-  /*--------------------------------------------------------------------
+  public static function get_player_name($player_id) {
+    $q = "
+      SELECT CONCAT(first_name, ' ', last_name)
+      FROM player
+      WHERE player_id = $player_id
+    ";
+    $name = DB::instance(DB_NAME)->select_field($q);
 
-  --------------------------------------------------------------------*/ 
+    return $name; 
+  }
+
   public static function get_team($team_id) {
     $q = "
       SELECT *
